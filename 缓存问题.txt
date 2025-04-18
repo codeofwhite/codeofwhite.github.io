@@ -1,1 +1,2 @@
 Ctrl + Shift + R
+一般 push 上去之后会存在些许的延迟

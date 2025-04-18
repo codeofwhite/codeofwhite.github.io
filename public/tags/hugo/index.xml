@@ -1,27 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on My New Hugo Site</title>
-    <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Posts on My New Hugo Site</description>
+    <title>Hugo on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/hugo/</link>
+    <description>Recent content in Hugo on My New Hugo Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Apr 2025 11:17:59 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>My First Post</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
-      <pubDate>Fri, 18 Apr 2025 11:17:59 +0800</pubDate>
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>强化学习入门</title>
-      <link>http://localhost:1313/posts/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</link>
-      <pubDate>Fri, 18 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</guid>
-      <description>&lt;p&gt;这里是你的文章内容。&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Fri, 18 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>部署个人博客：Hugo &#43; GitHub Pages</title>
       <link>http://localhost:1313/posts/%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2hugo/</link>
