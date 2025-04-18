@@ -2,3 +2,40 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = 'ananke'
+
+[[menu.main]]
+  identifier = "home"
+  name = "首页"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  identifier = "posts"
+  name = "文章"
+  url = "/posts/"
+  weight = 2
+
+[[menu.main]]
+  identifier = "ml"
+  name = "机器学习"
+  url = "/categories/ml/"
+  weight = 3
+
+[[menu.main]]
+  identifier = "coding"
+  name = "编程"
+  url = "/categories/coding/"
+  weight = 4
+
+[[menu.main]]
+  identifier = "about"
+  name = "关于"
+  url = "/about/"
+  weight = 5
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[params]
+  background_color_class = "bg-gray"
