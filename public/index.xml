@@ -16,6 +16,13 @@
       <description></description>
     </item>
     <item>
+      <title>关于作者</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Fri, 18 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;h2 id=&#34;-关于我&#34;&gt;👨‍💻 关于我&lt;/h2&gt;&#xA;&lt;p&gt;大家好，我是来自重庆大学软件学院的一名数据科学与大数据技术专业的学生。是一名来自澳门的港澳台学生。虽然专业名听起来有点长，但其实就是在研究如何让数据说话，让机器更聪明。&lt;/p&gt;&#xA;&lt;p&gt;平时，我喜欢在代码的世界里遨游，探索开发、机器学习和深度学习的奥秘。这个博客就是我在学习旅程中的小小记录，记录那些有趣的发现、奇妙的想法和偶尔的坑。&lt;/p&gt;&#xA;&lt;p&gt;如果你在我的博客中发现了错误，或者有更好的建议，欢迎随时联系我。我的微信是 &lt;code&gt;1363180320&lt;/code&gt;，电子邮件是 &lt;code&gt;zhj20040903@gmail.com&lt;/code&gt;。期待与你的交流和讨论！&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-我的头像&#34;&gt;📸 我的头像&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/icon.jpg&#34; alt=&#34;作者头像&#34;&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-我的学习之路&#34;&gt;📚 我的学习之路&lt;/h2&gt;&#xA;&lt;p&gt;从高中开始，我就对计算机产生了浓厚的兴趣。大学选择了数据科学与大数据技术专业，希望能够深入理解数据背后的故事。通过不断学习和实践，我逐渐掌握了编程、算法、机器学习等技能，也在这个过程中发现了自己的热情所在。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-我的座右铭&#34;&gt;💬 我的座右铭&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;不积跬步，无以至千里；不积小流，无以成江海。&amp;rdquo; — 《荀子·劝学》&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;这句话一直激励着我在学习的道路上不断前行。每一次的小进步，都是通向更大目标的阶梯。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-我的博客内容&#34;&gt;📝 我的博客内容&lt;/h2&gt;&#xA;&lt;p&gt;在这个博客中，你将找到：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;开发笔记&lt;/strong&gt;：记录我在编程过程中遇到的问题和解决方案。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;机器学习与深度学习&lt;/strong&gt;：分享我在学习和实践中的心得体会。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;学习心得&lt;/strong&gt;：总结我的学习方法和经验，帮助自己和他人更高效地学习。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;港澳台学生内地生存指南&lt;/strong&gt;：总结在内地的发展和有关港澳台的一些政策推送。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-联系我&#34;&gt;📬 联系我&lt;/h2&gt;&#xA;&lt;p&gt;如果你对我的博客内容感兴趣，或者有任何问题和建议，欢迎通过以下方式联系我：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;微信：&lt;code&gt;1363180320&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;电子邮件：&lt;code&gt;zhj20040903@gmail.com&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;期待与你的交流和合作！&lt;/p&gt;&#xA;&lt;hr&gt;</description>
+    </item>
+    <item>
       <title>强化学习入门</title>
       <link>http://localhost:1313/posts/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Fri, 18 Apr 2025 00:00:00 +0000</pubDate>
