@@ -1,8 +1,16 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = 'https://codemist.org/'
+languageCode = 'zh-cn'
+title = 'CodeMist · 记录技术与灵感'
 theme = 'ananke'
 
+# 站点元信息
+[params]
+  author = "CodeMist"
+  description = "记录机器学习、编程与建模的点滴探索"
+  background_color_class = "bg-gray"
+  show_reading_time = true
+
+# 菜单设置
 [[menu.main]]
   identifier = "home"
   name = "首页"
@@ -33,9 +41,17 @@ theme = 'ananke'
   url = "/about/"
   weight = 5
 
+# 分类与标签
 [taxonomies]
   category = "categories"
   tag = "tags"
 
-[params]
-  background_color_class = "bg-gray"
+# Markdown 渲染设置
+[markup]
+  [markup.highlight]
+    noClasses = false
+    style = "monokai"
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+

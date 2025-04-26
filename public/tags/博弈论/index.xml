@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>博弈论 on My New Hugo Site</title>
+    <title>博弈论 on CodeMist · 记录技术与灵感</title>
     <link>http://localhost:1313/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/</link>
-    <description>Recent content in 博弈论 on My New Hugo Site</description>
+    <description>Recent content in 博弈论 on CodeMist · 记录技术与灵感</description>
     <generator>Hugo</generator>
-    <language>en-us</language>
+    <language>zh-cn</language>
     <lastBuildDate>Fri, 18 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/index.xml" rel="self" type="application/rss+xml" />
     <item>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>WSL on CodeMist · 记录技术与灵感</title>
-    <link>http://localhost:1313/tags/wsl/</link>
-    <description>Recent content in WSL on CodeMist · 记录技术与灵感</description>
+    <title>Hadoop on CodeMist · 记录技术与灵感</title>
+    <link>http://localhost:1313/tags/hadoop/</link>
+    <description>Recent content in Hadoop on CodeMist · 记录技术与灵感</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 26 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/wsl/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/hadoop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spark Yarn 启动与关闭的注意事项总结</title>
       <link>http://localhost:1313/posts/spark-wsl/spark-yarn-%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>
@@ -21,13 +21,6 @@
       <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/spark-wsl/wsl-%E6%90%AD%E5%BB%BA-spark-debug/</guid>
       <description>&lt;p&gt;这是一篇记录在 WSL 环境下搭建 Spark 调试环境时遇到的问题及其解决方法的博客，方便日后排雷复用。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>WSL 配置 Spark</title>
-      <link>http://localhost:1313/posts/spark-wsl-%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/spark-wsl-%E9%85%8D%E7%BD%AE/</guid>
-      <description>&lt;p&gt;这是一篇介绍使用 Windows WSL 配置 Spark 的教程，包含 Java、Hadoop、Spark 的安装与配置过程。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
