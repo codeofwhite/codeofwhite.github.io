@@ -6,14 +6,35 @@
     <description>Recent content in Spark on CodeMist · 记录技术与灵感</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 26 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark Streaming 报错记录</title>
+      <link>http://localhost:1313/posts/spark-streaming-%E6%8A%A5%E9%94%99%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/spark-streaming-%E6%8A%A5%E9%94%99%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;p&gt;部署 Spark Streaming 实现流计算的常见错误。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Spark Yarn 启动与关闭的注意事项总结</title>
       <link>http://localhost:1313/posts/spark-wsl/spark-yarn-%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>
       <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/spark-wsl/spark-yarn-%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
       <description>&lt;p&gt;在开发环境中使用 Spark + Hadoop 时，经常会遇到一些“重启就崩”“莫名其妙报错”的情况。这篇文章整理了一些常见的坑和最佳实践，希望能帮你优雅地启动和关闭 Spark/Hadoop 集群。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Spark 机器学习 与 Pytorch 分别</title>
+      <link>http://localhost:1313/posts/spark-wsl/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/spark-wsl/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spark 的几种启动方式</title>
+      <link>http://localhost:1313/posts/spark-wsl/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/spark-wsl/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/</guid>
+      <description></description>
     </item>
     <item>
       <title>WSL 下搭建 Spark 调试环境指南</title>
@@ -24,9 +45,9 @@
     </item>
     <item>
       <title>WSL 配置 Spark</title>
-      <link>http://localhost:1313/posts/spark-wsl-%E9%85%8D%E7%BD%AE/</link>
+      <link>http://localhost:1313/posts/spark-wsl/spark-wsl-%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/spark-wsl-%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://localhost:1313/posts/spark-wsl/spark-wsl-%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;p&gt;这是一篇介绍使用 Windows WSL 配置 Spark 的教程，包含 Java、Hadoop、Spark 的安装与配置过程。&lt;/p&gt;</description>
     </item>
   </channel>

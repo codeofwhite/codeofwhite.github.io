@@ -21,7 +21,7 @@ ERROR: namenode can only be executed by root.
 
 排查后发现，`start-dfs.sh` 脚本中对执行用户有限制（如下图），当前用户非 root 时会报错：
 
-![alt text](image.png)
+![alt text](/images/image.png)
 
 **解决方法：**
 - 使用 root 用户执行启动脚本，或

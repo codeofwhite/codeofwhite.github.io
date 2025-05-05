@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>基于 Debezium 的 CDC 数据同步实践 | CodeMist · 记录技术与灵感</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="本文介绍一个最小可运行的 Change Data Capture (CDC) 演示项目，实现 MySQL 数据库变更到 Kafka 的实时同步。项目包含以下核心组件：
+Docker Compose 配置：启动 MySQL、Kafka、Zookeeper、Debezium Connect 和 Kafka UI
+数据库初始化脚本：创建测试表和初始数据
+连接器注册脚本：配置 Debezium MySQL Connector">
+    <meta name="generator" content="Hugo 0.146.5">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="CodeMist">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/debezium/%E4%BD%BF%E7%94%A8-debezium-%E7%9A%84-cdc/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/posts/debezium/%E4%BD%BF%E7%94%A8-debezium-%E7%9A%84-cdc/">
+  <meta property="og:site_name" content="CodeMist · 记录技术与灵感">
+  <meta property="og:title" content="基于 Debezium 的 CDC 数据同步实践">
+  <meta property="og:description" content="本文介绍一个最小可运行的 Change Data Capture (CDC) 演示项目，实现 MySQL 数据库变更到 Kafka 的实时同步。项目包含以下核心组件：
+Docker Compose 配置：启动 MySQL、Kafka、Zookeeper、Debezium Connect 和 Kafka UI
+数据库初始化脚本：创建测试表和初始数据
+连接器注册脚本：配置 Debezium MySQL Connector">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-05-05T00:00:00+00:00">
+    <meta property="article:tag" content="Debezium">
+    <meta property="article:tag" content="Kafka">
+    <meta property="article:tag" content="CDC">
+    <meta property="article:tag" content="Docker">
+    <meta property="article:tag" content="数据同步">
+
+  <meta itemprop="name" content="基于 Debezium 的 CDC 数据同步实践">
+  <meta itemprop="description" content="本文介绍一个最小可运行的 Change Data Capture (CDC) 演示项目，实现 MySQL 数据库变更到 Kafka 的实时同步。项目包含以下核心组件：
+Docker Compose 配置：启动 MySQL、Kafka、Zookeeper、Debezium Connect 和 Kafka UI
+数据库初始化脚本：创建测试表和初始数据
+连接器注册脚本：配置 Debezium MySQL Connector">
+  <meta itemprop="datePublished" content="2025-05-05T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-05T00:00:00+00:00">
+  <meta itemprop="wordCount" content="382">
+  <meta itemprop="keywords" content="Debezium,Kafka,CDC,Docker,数据同步">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="基于 Debezium 的 CDC 数据同步实践">
+  <meta name="twitter:description" content="本文介绍一个最小可运行的 Change Data Capture (CDC) 演示项目，实现 MySQL 数据库变更到 Kafka 的实时同步。项目包含以下核心组件：
+Docker Compose 配置：启动 MySQL、Kafka、Zookeeper、Debezium Connect 和 Kafka UI
+数据库初始化脚本：创建测试表和初始数据
+连接器注册脚本：配置 Debezium MySQL Connector">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-gray">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        CodeMist · 记录技术与灵感
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/" title="首页 page">
+              首页
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="文章汇集 page">
+              文章汇集
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/ml/" title="机器学习 page">
+              机器学习
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/coding/" title="开发 page">
+              开发
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/about/" title="关于 page">
+              关于
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">基于 Debezium 的 CDC 数据同步实践</h1>
+      
+      <p class="tracked"><strong>CodeMist</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-05-05T00:00:00Z">May 5, 2025</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - 2 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 382 words </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links text-light pr4-l w-two-thirds-l"><p>本文介绍一个最小可运行的 Change Data Capture (CDC) 演示项目，实现 MySQL 数据库变更到 Kafka 的实时同步。项目包含以下核心组件：</p>
+<p>Docker Compose 配置：启动 MySQL、Kafka、Zookeeper、Debezium Connect 和 Kafka UI</p>
+<p>数据库初始化脚本：创建测试表和初始数据</p>
+<p>连接器注册脚本：配置 Debezium MySQL Connector</p>
+<h1 id="项目结构">项目结构</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">cdc</span><span class="o">-</span><span class="n">demo</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl"><span class="err">├──</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="p">.</span><span class="n">yml</span> <span class="err">#</span> <span class="err">容器编排配置</span>
+</span></span><span class="line"><span class="cl"><span class="err">├──</span> <span class="n">init</span><span class="p">.</span><span class="n">sql</span>    <span class="err">#</span> <span class="err">数据库初始化脚本</span>
+</span></span><span class="line"><span class="cl"><span class="err">└──</span> <span class="k">register</span><span class="o">-</span><span class="n">connector</span><span class="p">.</span><span class="n">sh</span>   <span class="err">#</span> <span class="n">Debezium</span> <span class="err">连接器注册脚本</span>
+</span></span></code></pre></div><h1 id="核心配置">核心配置</h1>
+<h2 id="docker-composeyml">docker-compose.yml</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3.7&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">zookeeper</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">confluentinc/cp-zookeeper:7.3.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ZOOKEEPER_CLIENT_PORT</span><span class="p">:</span><span class="w"> </span><span class="m">2181</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ZOOKEEPER_TICK_TIME</span><span class="p">:</span><span class="w"> </span><span class="m">2000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">kafka</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">confluentinc/cp-kafka:7.3.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">zookeeper</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;9092:9092&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">KAFKA_BROKER_ID</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">KAFKA_ZOOKEEPER_CONNECT</span><span class="p">:</span><span class="w"> </span><span class="l">zookeeper:2181</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">KAFKA_ADVERTISED_LISTENERS</span><span class="p">:</span><span class="w"> </span><span class="l">PLAINTEXT://kafka:9092</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mysql</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mysql:8.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;3306:3306&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l">testdb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./init.sql:/docker-entrypoint-initdb.d/init.sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="s2">&#34;--server-id=223344&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="s2">&#34;--log-bin=mysql-bin&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="s2">&#34;--binlog-format=ROW&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="s2">&#34;--binlog-row-image=FULL&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">connect</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">debezium/connect:2.4.1.Final</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8083:8083&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">kafka</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">BOOTSTRAP_SERVERS</span><span class="p">:</span><span class="w"> </span><span class="l">kafka:9092</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">GROUP_ID</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">CONFIG_STORAGE_TOPIC</span><span class="p">:</span><span class="w"> </span><span class="l">debezium_config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">OFFSET_STORAGE_TOPIC</span><span class="p">:</span><span class="w"> </span><span class="l">debezium_offsets</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">STATUS_STORAGE_TOPIC</span><span class="p">:</span><span class="w"> </span><span class="l">debezium_status</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">KEY_CONVERTER_SCHEMAS_ENABLE</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;false&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">VALUE_CONVERTER_SCHEMAS_ENABLE</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;false&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">CONNECT_KEY_CONVERTER</span><span class="p">:</span><span class="w"> </span><span class="l">org.apache.kafka.connect.json.JsonConverter</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">CONNECT_VALUE_CONVERTER</span><span class="p">:</span><span class="w"> </span><span class="l">org.apache.kafka.connect.json.JsonConverter</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">CONNECT_REST_ADVERTISED_HOST_NAME</span><span class="p">:</span><span class="w"> </span><span class="l">connect</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">CONNECT_PLUGIN_PATH</span><span class="p">:</span><span class="w"> </span><span class="l">/kafka/connect</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">kafka-ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">provectuslabs/kafka-ui:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8080:8080&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">KAFKA_CLUSTERS_0_NAME</span><span class="p">:</span><span class="w"> </span><span class="l">local</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS</span><span class="p">:</span><span class="w"> </span><span class="l">kafka:9092</span><span class="w">
+</span></span></span></code></pre></div><h2 id="initsql-mysql-初始数据">init.sql (MySQL 初始数据)</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">testdb</span><span class="p">.</span><span class="n">test_table</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">age</span><span class="w"> </span><span class="nb">INT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">testdb</span><span class="p">.</span><span class="n">test_table</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><h2 id="register-connectorsh-注册-debezium-mysql-connector">register-connector.sh (注册 Debezium MySQL Connector)</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl">curl -X POST http://localhost:8083/connectors -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -d <span class="s1">&#39;{
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;name&#34;: &#34;mysql-cdc-connector&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;config&#34;: {
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;connector.class&#34;: &#34;io.debezium.connector.mysql.MySqlConnector&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;database.hostname&#34;: &#34;mysql&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;database.port&#34;: &#34;3306&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;database.user&#34;: &#34;root&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;database.password&#34;: &#34;root&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;database.server.id&#34;: &#34;223344&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;topic.prefix&#34;: &#34;mysql-server&#34;, 
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;database.server.name&#34;: &#34;mysql-server&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;database.include.list&#34;: &#34;testdb&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;table.include.list&#34;: &#34;testdb.test_table&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;include.schema.changes&#34;: &#34;false&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;snapshot.mode&#34;: &#34;initial&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;schema.history.internal.kafka.bootstrap.servers&#34;: &#34;kafka:9092&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;schema.history.internal.kafka.topic&#34;: &#34;schema-changes.testdb&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">  }
+</span></span></span><span class="line"><span class="cl"><span class="s1">}&#39;</span>
+</span></span></code></pre></div><p><strong>这个配置会在 Kafka 中创建两个不同用途的 topic</strong>，它们分别是：</p>
+<hr>
+<h2 id="topic-说明">Topic 说明</h2>
+<h3 id="1-schema-changestestdb">1. <code>schema-changes.testdb</code></h3>
+<p>这是 <strong>Debezium 内部使用的 topic</strong>，记录的是 <strong>MySQL 表结构（schema）变化历史</strong>。</p>
+<ul>
+<li>
+<p>由配置项控制：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;schema.history.internal.kafka.topic&#34;</span><span class="err">:</span> <span class="s2">&#34;schema-changes.testdb&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>存什么？</p>
+<ul>
+<li>表创建、字段变更、主键变化等结构性信息</li>
+<li>Kafka Connect 用它来 <strong>恢复任务状态、确保幂等性</strong></li>
+</ul>
+</li>
+<li>
+<p>默认不会显示在业务消费中，<strong>你一般不需要关心这个 topic 的内容</strong></p>
+</li>
+<li>
+<p>🛠 通常 partition=1，replication=1 就够了</p>
+</li>
+</ul>
+<hr>
+<h3 id="2-mysql-servertestdbtest_table">2. <code>mysql-server.testdb.test_table</code></h3>
+<p>这是 <strong>业务数据 topic</strong>，即你真正要消费的 <strong>CDC（变更数据捕获）数据流</strong>。</p>
+<ul>
+<li>
+<p>构成方式：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;topic.prefix&#34;</span><span class="err">:</span> <span class="s2">&#34;mysql-server&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;database.include.list&#34;</span><span class="err">:</span> <span class="s2">&#34;testdb&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;table.include.list&#34;</span><span class="err">:</span> <span class="s2">&#34;testdb.test_table&#34;</span>
+</span></span></code></pre></div><p>最终 topic = <code>prefix + . + database + . + table</code>
+→ <code>mysql-server.testdb.test_table</code></p>
+</li>
+<li>
+<p>存什么？</p>
+<ul>
+<li><code>INSERT</code> / <code>UPDATE</code> / <code>DELETE</code> 操作对应的数据变更记录</li>
+<li>比如 <code>UPDATE age = 32</code>，会记录 <code>before</code> 和 <code>after</code> 值</li>
+</ul>
+</li>
+<li>
+<p>Kafka UI 中我们关注的就是这个 topic</p>
+</li>
+</ul>
+<h1 id="使用步骤">使用步骤</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 1. 启动服务</span>
+</span></span><span class="line"><span class="cl">docker-compose up -d
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 等待服务启动（尤其是 MySQL 和 Kafka）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 3. 注册 CDC connector</span>
+</span></span><span class="line"><span class="cl">bash register-connector.sh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 4. 浏览 Kafka UI 查看消息 (http://localhost:8080/ui)，查看 topic: mysql-server.testdb.test_table</span>
+</span></span></code></pre></div><p>测试增量数据同步</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it mysql mysql -uroot -proot
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">USE testdb<span class="p">;</span>
+</span></span><span class="line"><span class="cl">INSERT INTO test_table <span class="o">(</span>name, age<span class="o">)</span> VALUES <span class="o">(</span><span class="s1">&#39;Charlie&#39;</span>, 40<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">UPDATE test_table SET <span class="nv">age</span> <span class="o">=</span> <span class="m">31</span> WHERE <span class="nv">name</span> <span class="o">=</span> <span class="s1">&#39;Alice&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">DELETE FROM test_table WHERE <span class="nv">name</span> <span class="o">=</span> <span class="s1">&#39;Bob&#39;</span><span class="p">;</span>
+</span></span></code></pre></div><h1 id="常见问题处理">常见问题处理</h1>
+<h2 id="问题缺少-kafka-topic">问题：缺少 Kafka Topic</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 在容器里执行以下命令</span>
+</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;kafka-container-id&gt; bash
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建 topic（名字要和配置中一致）</span>
+</span></span><span class="line"><span class="cl">kafka-topics --bootstrap-server localhost:9092 --create <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --topic schema-changes.testdb --replication-factor <span class="m">1</span> --partitions <span class="m">1</span>
+</span></span></code></pre></div><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/debezium/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Debezium</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/kafka/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Kafka</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/cdc/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">CDC</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/docker/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Docker</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">数据同步</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/wsl-kafka-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/">WSL Kafka 安装教程</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-gray bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  CodeMist · 记录技术与灵感 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -6,8 +6,64 @@
     <description>Recent content in Tags on CodeMist · 记录技术与灵感</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 26 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 05 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CDC</title>
+      <link>http://localhost:1313/tags/cdc/</link>
+      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/cdc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Debezium</title>
+      <link>http://localhost:1313/tags/debezium/</link>
+      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/debezium/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>http://localhost:1313/tags/docker/</link>
+      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kafka</title>
+      <link>http://localhost:1313/tags/kafka/</link>
+      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/kafka/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>数据同步</title>
+      <link>http://localhost:1313/tags/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/</link>
+      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spark</title>
+      <link>http://localhost:1313/tags/spark/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/spark/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spark Streaming</title>
+      <link>http://localhost:1313/tags/spark-streaming/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/spark-streaming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>WSL</title>
+      <link>http://localhost:1313/tags/wsl/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/wsl/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Hadoop</title>
       <link>http://localhost:1313/tags/hadoop/</link>
@@ -16,17 +72,17 @@
       <description></description>
     </item>
     <item>
-      <title>Spark</title>
-      <link>http://localhost:1313/tags/spark/</link>
+      <title>ML</title>
+      <link>http://localhost:1313/tags/ml/</link>
       <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/spark/</guid>
+      <guid>http://localhost:1313/tags/ml/</guid>
       <description></description>
     </item>
     <item>
-      <title>WSL</title>
-      <link>http://localhost:1313/tags/wsl/</link>
+      <title>机器学习</title>
+      <link>http://localhost:1313/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/wsl/</guid>
+      <guid>http://localhost:1313/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
       <description></description>
     </item>
     <item>

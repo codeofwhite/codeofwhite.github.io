@@ -16,6 +16,20 @@
       <description>&lt;p&gt;在开发环境中使用 Spark + Hadoop 时，经常会遇到一些“重启就崩”“莫名其妙报错”的情况。这篇文章整理了一些常见的坑和最佳实践，希望能帮你优雅地启动和关闭 Spark/Hadoop 集群。&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Spark 机器学习 与 Pytorch 分别</title>
+      <link>http://localhost:1313/posts/spark-wsl/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/spark-wsl/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spark 的几种启动方式</title>
+      <link>http://localhost:1313/posts/spark-wsl/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/spark-wsl/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>WSL 下搭建 Spark 调试环境指南</title>
       <link>http://localhost:1313/posts/spark-wsl/wsl-%E6%90%AD%E5%BB%BA-spark-debug/</link>
       <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>

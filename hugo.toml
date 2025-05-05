@@ -8,6 +8,8 @@ theme = 'ananke'
   author = "CodeMist"
   description = "记录机器学习、编程与建模的点滴探索"
   background_color_class = "bg-gray"
+  # 支持暗色模式
+  text_color = "text-light"
   show_reading_time = true
 
 # 菜单设置
@@ -19,7 +21,7 @@ theme = 'ananke'
 
 [[menu.main]]
   identifier = "posts"
-  name = "文章"
+  name = "文章汇集"
   url = "/posts/"
   weight = 2
 
@@ -31,7 +33,7 @@ theme = 'ananke'
 
 [[menu.main]]
   identifier = "coding"
-  name = "编程"
+  name = "开发"
   url = "/categories/coding/"
   weight = 4
 

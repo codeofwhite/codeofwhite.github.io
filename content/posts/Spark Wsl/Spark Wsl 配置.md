@@ -77,7 +77,7 @@ hadoop version
 
 ## 修改配置文件
 
-![alt text](image.png)
+![alt text](/images/image2.png)
 
 ### `core-site.xml`
 

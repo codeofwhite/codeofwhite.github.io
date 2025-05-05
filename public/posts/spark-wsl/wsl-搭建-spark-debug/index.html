@@ -88,8 +88,8 @@
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/posts/" title="文章 page">
-              文章
+            <a class="hover-white white-90 no-underline" href="/posts/" title="文章汇集 page">
+              文章汇集
             </a>
           </li>
           
@@ -100,8 +100,8 @@
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/categories/coding/" title="编程 page">
-              编程
+            <a class="hover-white white-90 no-underline" href="/categories/coding/" title="开发 page">
+              开发
             </a>
           </li>
           
@@ -150,12 +150,12 @@
         <span class="f6 mv4 dib tracked"> - 250 words </span>
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>这是一篇记录在 WSL 环境下搭建 Spark 调试环境时遇到的问题及其解决方法的博客，方便日后排雷复用。</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links text-light pr4-l w-two-thirds-l"><p>这是一篇记录在 WSL 环境下搭建 Spark 调试环境时遇到的问题及其解决方法的博客，方便日后排雷复用。</p>
 <h2 id="-bug-1用户权限问题">💥 Bug 1：用户权限问题</h2>
 <p>启动 Hadoop 时出现错误：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ERROR: namenode can only be executed by root.
 </span></span></code></pre></div><p>排查后发现，<code>start-dfs.sh</code> 脚本中对执行用户有限制（如下图），当前用户非 root 时会报错：</p>
-<p><img src="image.png" alt="alt text"></p>
+<p><img src="/images/image.png" alt="alt text"></p>
 <p><strong>解决方法：</strong></p>
 <ul>
 <li>使用 root 用户执行启动脚本，或</li>
@@ -299,7 +299,15 @@
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/posts/spark-wsl-%E9%85%8D%E7%BD%AE/">WSL 配置 Spark</a>
+          <a href="/posts/spark-wsl/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/">Spark 的几种启动方式</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/spark-wsl/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">Spark 机器学习 与 Pytorch 分别</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/spark-wsl/spark-wsl-%E9%85%8D%E7%BD%AE/">WSL 配置 Spark</a>
         </li>
 	    
     </ul>
