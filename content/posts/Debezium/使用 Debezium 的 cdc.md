@@ -1,6 +1,7 @@
 ---
 title: "基于 Debezium 的 CDC 数据同步实践"
 date: 2025-05-05
+categories: ["bigdata"]  
 tags: ["Debezium", "Kafka", "CDC", "Docker", "数据同步"]
 draft: false
 summary: "一个最小化的 CDC 演示项目，展示如何使用 Debezium 实现 MySQL 到 Kafka 的数据变更捕获(CDC)"

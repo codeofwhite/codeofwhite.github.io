@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flink on CodeMist · 记录技术与生活</title>
+    <link>https://codemist.org/tags/flink/</link>
+    <description>Recent content in Flink on CodeMist · 记录技术与生活</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://codemist.org/tags/flink/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flink 重启丢失 Catalog 等记录问题</title>
+      <link>https://codemist.org/posts/flink/flink-sql-client-catalog%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://codemist.org/posts/flink/flink-sql-client-catalog%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/</guid>
+      <description>&lt;p&gt;WSL 中 Flink 重启丢失 Catalog 等记录问题&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>wsl Flink paimon 实践</title>
+      <link>https://codemist.org/posts/flink/wsl-%E6%9E%84%E5%BB%BA-flink-&#43;-paimon/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://codemist.org/posts/flink/wsl-%E6%9E%84%E5%BB%BA-flink-&#43;-paimon/</guid>
+      <description>&lt;p&gt;wsl Flink paimon 实践&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>wsl Flink 配置项</title>
+      <link>https://codemist.org/posts/flink/flink-%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://codemist.org/posts/flink/flink-%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/</guid>
+      <description>&lt;p&gt;wsl Flink 实践&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Spark 机器学习 与 Pytorch 分别 | CodeMist · 记录技术与生活</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="CodeMist">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://codemist.org/posts/spark/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+    
+
+    <meta property="og:url" content="https://codemist.org/posts/spark/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+  <meta property="og:site_name" content="CodeMist · 记录技术与生活">
+  <meta property="og:title" content="Spark 机器学习 与 Pytorch 分别">
+  <meta property="og:description" content="记录大数据开发、AI技术与日常学习的点滴探索">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-26T00:00:00+00:00">
+    <meta property="article:tag" content="ML">
+    <meta property="article:tag" content="Spark">
+    <meta property="article:tag" content="Hadoop">
+    <meta property="article:tag" content="机器学习">
+
+  <meta itemprop="name" content="Spark 机器学习 与 Pytorch 分别">
+  <meta itemprop="description" content="记录大数据开发、AI技术与日常学习的点滴探索">
+  <meta itemprop="datePublished" content="2025-04-26T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-04-26T00:00:00+00:00">
+  <meta itemprop="wordCount" content="28">
+  <meta itemprop="keywords" content="ML,Spark,Hadoop,机器学习">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Spark 机器学习 与 Pytorch 分别">
+  <meta name="twitter:description" content="记录大数据开发、AI技术与日常学习的点滴探索">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-gray">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        CodeMist · 记录技术与生活
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/" title="首页 page">
+              首页
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="文章汇集 page">
+              文章汇集
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/bigdata/" title="大数据开发笔记 page">
+              大数据开发笔记
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/ai/" title="AI page">
+              AI
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/daily-study/" title="日常和学习 page">
+              日常和学习
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/about/" title="关于 page">
+              关于
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Spark 机器学习 与 Pytorch 分别</h1>
+      
+      <p class="tracked"><strong>CodeMist</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-04-26T00:00:00Z">April 26, 2025</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - One minute read </span>
+        <span class="f6 mv4 dib tracked"> - 28 words </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links text-light pr4-l w-two-thirds-l"><h3 id="spark-mllib-与-pytorch-对比"><strong>Spark MLlib 与 PyTorch 对比</strong></h3>
+<h4 id="1-核心定位"><strong>1. 核心定位</strong></h4>
+<ul>
+<li><strong>Spark MLlib</strong>：专注<strong>分布式大数据处理</strong>，适合传统机器学习（如回归、聚类）和大规模数据预处理。</li>
+<li><strong>PyTorch</strong>：专注<strong>深度学习</strong>（如CNN、RNN），支持动态计算图和GPU加速，适合复杂模型研发。</li>
+</ul>
+<h4 id="2-数据处理"><strong>2. 数据处理</strong></h4>
+<ul>
+<li><strong>Spark</strong>：基于分布式数据集（RDD/DataFrame），适合批处理和流式数据。</li>
+<li><strong>PyTorch</strong>：单机为主（支持分布式扩展），通过<code>DataLoader</code>高效加载数据，适合小规模高维数据（如图像、文本）。</li>
+</ul>
+<h4 id="3-计算模型"><strong>3. 计算模型</strong></h4>
+<ul>
+<li><strong>Spark</strong>：静态计算图，适合固定流程的分布式计算。</li>
+<li><strong>PyTorch</strong>：动态计算图，灵活调试，适合快速迭代。</li>
+</ul>
+<h4 id="4-性能与扩展"><strong>4. 性能与扩展</strong></h4>
+<ul>
+<li><strong>Spark</strong>：依赖集群规模，适合海量数据批处理。</li>
+<li><strong>PyTorch</strong>：依赖GPU加速，适合深度学习的高性能计算。</li>
+</ul>
+<h4 id="5-适用场景"><strong>5. 适用场景</strong></h4>
+<ul>
+<li><strong>选Spark MLlib</strong>：需处理TB级数据或传统机器学习任务。</li>
+<li><strong>选PyTorch</strong>：需训练复杂神经网络或研究新模型。</li>
+</ul>
+<p><strong>总结</strong>：两者互补——Spark处理大数据，PyTorch深耕深度学习。</p><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/ml/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ML</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/spark/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Spark</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/hadoop/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Hadoop</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">机器学习</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/spark/spark-yarn-%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">Spark Yarn 启动与关闭的注意事项总结</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/spark/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/">Spark 的几种启动方式</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/spark/wsl-%E6%90%AD%E5%BB%BA-spark-debug/">WSL 下搭建 Spark 调试环境指南</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/spark/spark-wsl-%E9%85%8D%E7%BD%AE/">WSL 配置 Spark</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-gray bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://codemist.org/" >
+    &copy;  CodeMist · 记录技术与生活 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+
+<div style="margin-top: 10px; color: #666; font-size: 14px;">
+  总访问量：<span id="busuanzi_value_site_pv"></span> 次 | 
+  访客数：<span id="busuanzi_value_site_uv"></span> 人
+</div>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </body>
+</html>

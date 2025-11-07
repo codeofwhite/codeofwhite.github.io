@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Flink 重启丢失 Catalog 等记录问题 | CodeMist · 记录技术与生活</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="WSL 中 Flink 重启丢失 Catalog 等记录问题">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="CodeMist">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://codemist.org/posts/flink/flink-sql-client-catalog%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/">
+    
+
+    <meta property="og:url" content="https://codemist.org/posts/flink/flink-sql-client-catalog%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/">
+  <meta property="og:site_name" content="CodeMist · 记录技术与生活">
+  <meta property="og:title" content="Flink 重启丢失 Catalog 等记录问题">
+  <meta property="og:description" content="WSL 中 Flink 重启丢失 Catalog 等记录问题">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-28T00:00:00+00:00">
+    <meta property="article:tag" content="WSL">
+    <meta property="article:tag" content="Flink">
+
+  <meta itemprop="name" content="Flink 重启丢失 Catalog 等记录问题">
+  <meta itemprop="description" content="WSL 中 Flink 重启丢失 Catalog 等记录问题">
+  <meta itemprop="datePublished" content="2025-04-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-04-28T00:00:00+00:00">
+  <meta itemprop="wordCount" content="162">
+  <meta itemprop="keywords" content="WSL,Flink">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Flink 重启丢失 Catalog 等记录问题">
+  <meta name="twitter:description" content="WSL 中 Flink 重启丢失 Catalog 等记录问题">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-gray">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        CodeMist · 记录技术与生活
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/" title="首页 page">
+              首页
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="文章汇集 page">
+              文章汇集
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/bigdata/" title="大数据开发笔记 page">
+              大数据开发笔记
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/ai/" title="AI page">
+              AI
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/daily-study/" title="日常和学习 page">
+              日常和学习
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/about/" title="关于 page">
+              关于
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Flink 重启丢失 Catalog 等记录问题</h1>
+      
+      <p class="tracked"><strong>CodeMist</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-04-28T00:00:00Z">April 28, 2025</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - One minute read </span>
+        <span class="f6 mv4 dib tracked"> - 162 words </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links text-light pr4-l w-two-thirds-l"><p>WSL 中 Flink 重启丢失 Catalog 等记录问题</p>
+<p>Flink SQL Client 每次启动时「catalog（目录）、table（表）」等对象消失，主要是因为 <strong>默认的 catalog 和 database 配置是临时的，且没有持久化到外部存储或配置文件中</strong>。以下是造成这种现象的原因及解决方案。</p>
+<hr>
+<h3 id="-原因分析">🌐 原因分析</h3>
+<ol>
+<li>
+<p><strong>默认使用内存 Catalog（<code>default_catalog</code>）</strong></p>
+<ul>
+<li>Flink SQL Client 默认启动时使用内存中的 <code>default_catalog.default_database</code>，所有通过 SQL 创建的表（如 <code>CREATE TABLE</code>）默认只存在于这个会话中。</li>
+<li>当你关闭 Flink SQL Client 后，内存中的 catalog/table 就会丢失。</li>
+</ul>
+</li>
+<li>
+<p><strong>没有使用持久化 Catalog（如 Hive Catalog / JDBC Catalog / FileSystem Catalog）</strong></p>
+<ul>
+<li>只有当你配置并使用了一个外部持久化的 catalog（如 Hive Metastore、JDBC Catalog 或存储在本地/远程文件系统的 FileSystem Catalog）时，表结构才会保存在外部。</li>
+</ul>
+</li>
+<li>
+<p><strong>未使用 <code>.sql</code> 脚本或 YAML 初始化配置</strong></p>
+<ul>
+<li>如果你没有使用初始化 SQL 文件或 YAML 配置文件，SQL Client 启动时不会自动加载你之前的表定义。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="-解决方案">✅ 解决方案</h3>
+<h4 id="方法一使用持久化-catalog推荐">方法一：使用持久化 Catalog（推荐）</h4>
+<ul>
+<li>示例：使用 HiveCatalog</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">CATALOG</span><span class="w"> </span><span class="n">my_hive</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s1">&#39;type&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hive&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s1">&#39;default-database&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;default&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s1">&#39;hive-conf-dir&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;/path/to/hive/conf&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">USE</span><span class="w"> </span><span class="k">CATALOG</span><span class="w"> </span><span class="n">my_hive</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>👉 使用 HiveCatalog 后，所有表会注册进 Hive Metastore，下次重启依然存在。</p>
+<hr>
+<h4 id="方法二使用-filesystem-catalog轻量级方案">方法二：使用 FileSystem Catalog（轻量级方案）</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">CATALOG</span><span class="w"> </span><span class="n">my_fs</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s1">&#39;type&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;filesystem&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s1">&#39;default-database&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s1">&#39;warehouse&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;file:///path/to/catalog_dir&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>创建的表会写入本地/远程目录（如 HDFS）。</li>
+<li>重启 Flink SQL Client 并重新 <code>USE CATALOG my_fs</code> 后可再次访问。</li>
+</ul>
+<hr>
+<h4 id="方法三配置初始化脚本">方法三：配置初始化脚本</h4>
+<p>可以在 Flink SQL Client 启动时使用初始化 SQL 脚本或 YAML 配置：</p>
+<ul>
+<li><strong>配置 <code>sql-client-defaults.yaml</code>：</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">catalogs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">my_hive</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">hive</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hive-conf-dir</span><span class="p">:</span><span class="w"> </span><span class="l">/path/to/hive/conf</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>放入 <code>${FLINK_HOME}/conf/sql-client-defaults.yaml</code> 中，每次启动 SQL Client 时自动加载。</li>
+</ul>
+<hr>
+<h3 id="-补充建议">📌 补充建议</h3>
+<ul>
+<li>对于生产环境或长期项目，<strong>一定不要依赖 default_catalog</strong>。</li>
+<li>推荐使用 HiveCatalog 或 FileSystemCatalog 等持久化方案。</li>
+<li>对于实验环境，建议将建表语句保存成 SQL 脚本，每次启动后自动执行。</li>
+</ul>
+<hr><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/wsl/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">WSL</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/flink/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Flink</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/flink/wsl-%E6%9E%84%E5%BB%BA-flink-&#43;-paimon/">wsl Flink paimon 实践</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/flink/flink-%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">wsl Flink 配置项</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-gray bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://codemist.org/" >
+    &copy;  CodeMist · 记录技术与生活 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+
+<div style="margin-top: 10px; color: #666; font-size: 14px;">
+  总访问量：<span id="busuanzi_value_site_pv"></span> 次 | 
+  访客数：<span id="busuanzi_value_site_uv"></span> 人
+</div>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </body>
+</html>

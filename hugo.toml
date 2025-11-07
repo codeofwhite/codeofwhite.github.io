@@ -1,12 +1,12 @@
 baseURL = 'https://codemist.org/'
 languageCode = 'zh-cn'
-title = 'CodeMist · 记录技术与灵感'
+title = 'CodeMist · 记录技术与生活'
 theme = 'ananke'
 
-# 站点元信息
+# 站点元信息（对应三个核心分类）
 [params]
   author = "CodeMist"
-  description = "记录机器学习、编程与建模的点滴探索"
+  description = "记录大数据开发、AI技术与日常学习的点滴探索"
   background_color_class = "bg-gray"
   # 支持暗色模式
   text_color = "text-light"
@@ -26,22 +26,28 @@ theme = 'ananke'
   weight = 2
 
 [[menu.main]]
-  identifier = "ml"
-  name = "机器学习"
-  url = "/categories/ml/"
+  identifier = "bigdata"
+  name = "大数据开发笔记"
+  url = "/categories/bigdata/"
   weight = 3
 
 [[menu.main]]
-  identifier = "coding"
-  name = "开发"
-  url = "/categories/coding/"
+  identifier = "ai"
+  name = "AI"
+  url = "/categories/ai/"
   weight = 4
+
+[[menu.main]]
+  identifier = "daily-study"
+  name = "日常和学习"
+  url = "/categories/daily-study/"
+  weight = 5
 
 [[menu.main]]
   identifier = "about"
   name = "关于"
   url = "/about/"
-  weight = 5
+  weight = 6
 
 # 分类与标签
 [taxonomies]
@@ -56,4 +62,3 @@ theme = 'ananke'
   [markup.tableOfContents]
     startLevel = 2
     endLevel = 4
-

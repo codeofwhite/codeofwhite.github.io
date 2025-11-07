@@ -1,6 +1,7 @@
 ---
 title: "wsl Flink 配置项"
 date: 2025-04-28
+categories: ["bigdata"]  
 tags: ["wsl", "flink"]
 draft: false
 ---

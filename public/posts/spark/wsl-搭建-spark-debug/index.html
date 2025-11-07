@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>WSL 下搭建 Spark 调试环境指南 | CodeMist · 记录技术与生活</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="这是一篇记录在 WSL 环境下搭建 Spark 调试环境时遇到的问题及其解决方法的博客，方便日后排雷复用。">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="CodeMist">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://codemist.org/posts/spark/wsl-%E6%90%AD%E5%BB%BA-spark-debug/">
+    
+
+    <meta property="og:url" content="https://codemist.org/posts/spark/wsl-%E6%90%AD%E5%BB%BA-spark-debug/">
+  <meta property="og:site_name" content="CodeMist · 记录技术与生活">
+  <meta property="og:title" content="WSL 下搭建 Spark 调试环境指南">
+  <meta property="og:description" content="这是一篇记录在 WSL 环境下搭建 Spark 调试环境时遇到的问题及其解决方法的博客，方便日后排雷复用。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-26T00:00:00+00:00">
+    <meta property="article:tag" content="WSL">
+    <meta property="article:tag" content="Spark">
+    <meta property="article:tag" content="Hadoop">
+
+  <meta itemprop="name" content="WSL 下搭建 Spark 调试环境指南">
+  <meta itemprop="description" content="这是一篇记录在 WSL 环境下搭建 Spark 调试环境时遇到的问题及其解决方法的博客，方便日后排雷复用。">
+  <meta itemprop="datePublished" content="2025-04-26T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-04-26T00:00:00+00:00">
+  <meta itemprop="wordCount" content="250">
+  <meta itemprop="keywords" content="WSL,Spark,Hadoop">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="WSL 下搭建 Spark 调试环境指南">
+  <meta name="twitter:description" content="这是一篇记录在 WSL 环境下搭建 Spark 调试环境时遇到的问题及其解决方法的博客，方便日后排雷复用。">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-gray">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        CodeMist · 记录技术与生活
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/" title="首页 page">
+              首页
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="文章汇集 page">
+              文章汇集
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/bigdata/" title="大数据开发笔记 page">
+              大数据开发笔记
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/ai/" title="AI page">
+              AI
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/daily-study/" title="日常和学习 page">
+              日常和学习
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/about/" title="关于 page">
+              关于
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">WSL 下搭建 Spark 调试环境指南</h1>
+      
+      <p class="tracked"><strong>CodeMist</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-04-26T00:00:00Z">April 26, 2025</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - 2 minutes read </span>
+        <span class="f6 mv4 dib tracked"> - 250 words </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links text-light pr4-l w-two-thirds-l"><p>这是一篇记录在 WSL 环境下搭建 Spark 调试环境时遇到的问题及其解决方法的博客，方便日后排雷复用。</p>
+<h2 id="-bug-1用户权限问题">💥 Bug 1：用户权限问题</h2>
+<p>启动 Hadoop 时出现错误：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ERROR: namenode can only be executed by root.
+</span></span></code></pre></div><p>排查后发现，<code>start-dfs.sh</code> 脚本中对执行用户有限制（如下图），当前用户非 root 时会报错：</p>
+<p><img src="/images/image.png" alt="alt text"></p>
+<p><strong>解决方法：</strong></p>
+<ul>
+<li>使用 root 用户执行启动脚本，或</li>
+<li>修改 <code>start-dfs.sh</code> 中的用户校验（仅建议在开发环境使用）</li>
+</ul>
+<hr>
+<h2 id="-bug-2ssh-无密码登录失败">🚫 Bug 2：SSH 无密码登录失败</h2>
+<p>报错信息：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">localhost: zhj20@localhost: Permission denied <span class="o">(</span>publickey,password<span class="o">)</span>
+</span></span></code></pre></div><p>说明 SSH 无密码登录未配置，Hadoop 启动过程中的内部通信失败。</p>
+<p><strong>解决步骤：</strong></p>
+<ol>
+<li>
+<p><strong>生成 SSH 密钥（若无）</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen -t rsa -P <span class="s1">&#39;&#39;</span> -f ~/.ssh/id_rsa
+</span></span></code></pre></div></li>
+<li>
+<p><strong>配置公钥认证</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+</span></span><span class="line"><span class="cl">chmod <span class="m">600</span> ~/.ssh/authorized_keys
+</span></span></code></pre></div></li>
+<li>
+<p><strong>验证是否能免密登录</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh localhost
+</span></span></code></pre></div></li>
+</ol>
+<p>成功后应自动登录，无需输入密码，<code>exit</code> 退出即可。</p>
+<hr>
+<h2 id="-bug-3yarn-节点列表为空">🧭 Bug 3：YARN 节点列表为空</h2>
+<p>执行 <code>yarn node -list</code> 时无任何节点。</p>
+<p><strong>排查方向：</strong></p>
+<ul>
+<li>确认 ResourceManager 和 NodeManager 是否都已启动（<code>jps</code> 查看）</li>
+<li>检查 <code>yarn-site.xml</code> 配置是否正确</li>
+<li>查看日志文件是否有网络连接/端口异常</li>
+</ul>
+<hr>
+<h2 id="-bug-4namenode-启动失败editlog-异常">💣 Bug 4：NameNode 启动失败（EditLog 异常）</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">There appears to be a gap in the edit log. We expected txid 1, but got txid 113.
+</span></span></code></pre></div><p><strong>原因分析：</strong></p>
+<ul>
+<li>Hadoop 恢复 fsimage + editlog 时发现 txid 序号不连续，editlog 可能损坏或缺失。</li>
+</ul>
+<p><strong>解决方案（无重要数据时）：</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hdfs namenode -format
+</span></span><span class="line"><span class="cl">./sbin/start-dfs.sh
+</span></span></code></pre></div><p>⚠️ 注意：此操作会清空 HDFS 中的所有数据，仅建议在调试或开发环境中使用！</p>
+<hr>
+<h2 id="-bug-5datanode-启动失败无法写入副本">🔥 Bug 5：DataNode 启动失败，无法写入副本</h2>
+<p>错误信息：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">File ... could only be written to <span class="m">0</span> of the <span class="m">1</span> minReplication nodes. There are <span class="m">0</span> datanode<span class="o">(</span>s<span class="o">)</span> running
+</span></span></code></pre></div><p>排查配置：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat <span class="nv">$HADOOP_HOME</span>/etc/hadoop/hdfs-site.xml <span class="p">|</span> grep -A <span class="m">5</span> dfs.datanode.data.dir
+</span></span></code></pre></div><p>日志提示：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Incompatible clusterIDs
+</span></span><span class="line"><span class="cl">namenode <span class="nv">clusterID</span> <span class="o">=</span> CID-018939f5...
+</span></span><span class="line"><span class="cl">datanode <span class="nv">clusterID</span> <span class="o">=</span> CID-659a4b77...
+</span></span></code></pre></div><p>说明 DataNode 保存的 clusterID 与 NameNode 不一致。</p>
+<p><strong>解决办法：</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 停止 Hadoop</span>
+</span></span><span class="line"><span class="cl">./sbin/stop-dfs.sh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 清除 DataNode 数据（不要删 NameNode 数据！）</span>
+</span></span><span class="line"><span class="cl">rm -rf /opt/module/hadoop-3.4.1/hadoop_data/hdfs/datanode/*
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 重启</span>
+</span></span><span class="line"><span class="cl">./sbin/start-dfs.sh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看是否正常启动</span>
+</span></span><span class="line"><span class="cl">jps
+</span></span></code></pre></div><hr>
+<h2 id="-问题总结">📌 问题总结</h2>
+<table>
+  <thead>
+      <tr>
+          <th>问题描述</th>
+          <th>建议解决方式</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>namenode</code> 报只能由 root 执行</td>
+          <td>使用 root 启动，或调整脚本权限校验</td>
+      </tr>
+      <tr>
+          <td>SSH 登录失败</td>
+          <td>配置本机免密登录（<code>ssh localhost</code>）</td>
+      </tr>
+      <tr>
+          <td>YARN 无节点</td>
+          <td>检查 NodeManager 是否运行，查看日志</td>
+      </tr>
+      <tr>
+          <td>NameNode 启动失败（txid gap）</td>
+          <td>格式化 NameNode（开发环境可用）</td>
+      </tr>
+      <tr>
+          <td>DataNode 报 ClusterID 不一致</td>
+          <td>清空 datanode 数据目录，重新启动即可</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-参考链接">🔗 参考链接</h2>
+<ul>
+<li><a href="https://chatgpt.com/share/680c4e86-85fc-800f-917c-db92b4a6e81c">WSL 配置 Spark 的坑（ChatGPT 分享页 1）</a></li>
+<li><a href="https://chatgpt.com/share/680c4ead-ee00-800f-ab1d-47c1235f3bf0">调试 HDFS NameNode 启动失败（ChatGPT 分享页 2）</a></li>
+<li><a href="https://chatgpt.com/share/680c4ebc-5f4c-800f-a2ef-247f8d461413">DataNode ClusterID 不一致排查记录（ChatGPT 分享页 3）</a></li>
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/wsl/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">WSL</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/spark/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Spark</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/hadoop/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Hadoop</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/spark/spark-yarn-%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">Spark Yarn 启动与关闭的注意事项总结</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/spark/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/">Spark 的几种启动方式</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/spark/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">Spark 机器学习 与 Pytorch 分别</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/spark/spark-wsl-%E9%85%8D%E7%BD%AE/">WSL 配置 Spark</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-gray bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://codemist.org/" >
+    &copy;  CodeMist · 记录技术与生活 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+
+<div style="margin-top: 10px; color: #666; font-size: 14px;">
+  总访问量：<span id="busuanzi_value_site_pv"></span> 次 | 
+  访客数：<span id="busuanzi_value_site_uv"></span> 人
+</div>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  </body>
+</html>

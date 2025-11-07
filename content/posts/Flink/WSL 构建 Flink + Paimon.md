@@ -1,6 +1,7 @@
 ---
 title: "wsl Flink paimon 实践"
 date: 2025-04-28
+categories: ["bigdata"]  
 tags: ["wsl", "flink", "paimon"]
 draft: false
 ---
@@ -46,7 +47,6 @@ tar -xvzf flink-1.17.1-bin-scala_2.12.tgz
 ```bash
 wget https://archive.apache.org/dist/paimon/paimon-0.6.1/apache-paimon-0.6.1-bin.tar.gz
 ```
-
 * 解压后，将 `paimon-flink-*.jar` 放入 Flink 的 `lib/` 目录中。
 
 ---

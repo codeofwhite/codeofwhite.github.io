@@ -1,6 +1,7 @@
 ---
 title: "WSL Kafka 安装教程"
 date: 2025-04-28
+categories: ["bigdata"]  
 tags: ["Kafka", "WSL"]
 draft: false
 ---

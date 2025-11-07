@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Spark Streaming on CodeMist · 记录技术与灵感</title>
-    <link>http://localhost:1313/tags/spark-streaming/</link>
-    <description>Recent content in Spark Streaming on CodeMist · 记录技术与灵感</description>
+    <title>Spark Streaming on CodeMist · 记录技术与生活</title>
+    <link>https://codemist.org/tags/spark-streaming/</link>
+    <description>Recent content in Spark Streaming on CodeMist · 记录技术与生活</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/spark-streaming/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codemist.org/tags/spark-streaming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spark Streaming 报错记录</title>
-      <link>http://localhost:1313/posts/spark-streaming-%E6%8A%A5%E9%94%99%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</link>
+      <link>https://codemist.org/posts/spark/spark-streaming-%E6%8A%A5%E9%94%99%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/spark-streaming-%E6%8A%A5%E9%94%99%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://codemist.org/posts/spark/spark-streaming-%E6%8A%A5%E9%94%99%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</guid>
       <description>&lt;p&gt;部署 Spark Streaming 实现流计算的常见错误。&lt;/p&gt;</description>
     </item>
   </channel>

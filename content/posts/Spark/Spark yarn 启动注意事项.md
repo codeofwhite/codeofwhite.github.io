@@ -2,6 +2,7 @@
 
 title: "Spark Yarn 启动与关闭的注意事项总结"  
 date: 2025-04-26  
+categories: ["bigdata"]  
 tags: ["WSL", "Spark", "Hadoop"]  
 draft: false  
 

@@ -2,6 +2,7 @@
 
 title: "Spark 机器学习 与 Pytorch 分别"
 date: 2025-04-26
+categories: ["bigdata"]  
 tags: ["ML", "Spark", "Hadoop", "机器学习"]
 draft: false
 
