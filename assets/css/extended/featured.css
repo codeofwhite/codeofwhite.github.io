@@ -1,0 +1,13 @@
+/* ===== 精选文章标识 ===== */
+
+.post-entry:has([data-weight])::before {
+  content: "精选";
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--primary);
+  color: white;
+}

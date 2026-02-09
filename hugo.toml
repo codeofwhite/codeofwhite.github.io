@@ -1,53 +1,105 @@
 baseURL = 'https://codemist.org/'
 languageCode = 'zh-cn'
 title = 'CodeMist · 记录技术与生活'
-theme = 'ananke'
+theme = 'PaperMod'
+
+[pagination]
+  pagerSize = 6       
+  path = "page"      
 
 # 站点元信息（对应三个核心分类）
 [params]
   author = "CodeMist"
-  description = "记录大数据开发、AI技术与日常学习的点滴探索"
-  background_color_class = "bg-gray"
-  # 支持暗色模式
-  text_color = "text-light"
-  show_reading_time = true
+  description = "记录大数据开发、AI 技术与日常学习的点滴探索"
+
+  defaultTheme = "auto"
+  disableThemeToggle = false
+
+  ShowReadingTime = true
+  ShowWordCount   = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs  = true
+  ShowCodeCopyButtons = true
+  ShowShareButtons = false
+  ShowRssButtonInSectionTermList = true
+
+  ShowToc = true
+  TocOpen = true
+  mainSections = ["posts"]
+
+  recentPosts = 6
+
+  enableSearch = true
+
+  DateFormat = "2006-01-02"
+
+[params.profileMode]
+  enabled = true
+  title = "CodeMist"
+  subtitle = "大数据 · AI · 技术成长记录"
+  imageUrl = "images/me.jpg"
+  imageTitle = "CodeMist"
+  imageWidth = 120
+  imageHeight = 120
+
+  [[params.profileMode.buttons]]
+    name = "文章汇集"
+    url = "/posts/"
+
+  [[params.profileMode.buttons]]
+    name = "大数据"
+    url = "/categories/bigdata/"
+
+  [[params.profileMode.buttons]]
+    name = "AI"
+    url = "/categories/ai/"
+
+[params.goatCounter]
+  code = "codeofwhite"
+
+[params.assets]
+  customCSS = [
+    "css/extended/readability.css",
+    "css/extended/card.css",
+    "css/extended/featured.css"
+  ]
 
 # 菜单设置
 [[menu.main]]
-  identifier = "home"
-  name = "首页"
-  url = "/"
-  weight = 1
+  identifier = "search"
+  name = "搜索"
+  url = "/search/"
+  weight = 0
 
 [[menu.main]]
   identifier = "posts"
-  name = "文章汇集"
+  name = "文章"
   url = "/posts/"
-  weight = 2
+  weight = 1
 
 [[menu.main]]
   identifier = "bigdata"
-  name = "大数据开发笔记"
+  name = "大数据"
   url = "/categories/bigdata/"
-  weight = 3
+  weight = 2
 
 [[menu.main]]
   identifier = "ai"
   name = "AI"
   url = "/categories/ai/"
-  weight = 4
+  weight = 3
 
 [[menu.main]]
-  identifier = "daily-study"
-  name = "日常和学习"
+  identifier = "daily"
+  name = "学习 · 日常"
   url = "/categories/daily-study/"
-  weight = 5
+  weight = 4
 
 [[menu.main]]
   identifier = "about"
   name = "关于"
   url = "/about/"
-  weight = 6
+  weight = 5
 
 # 分类与标签
 [taxonomies]
@@ -62,3 +114,6 @@ theme = 'ananke'
   [markup.tableOfContents]
     startLevel = 2
     endLevel = 4
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

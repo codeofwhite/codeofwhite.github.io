@@ -1,387 +1,309 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>大数据开发笔记 | CodeMist · 记录技术与生活</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="记录大数据开发、AI技术与日常学习的点滴探索">
-    <meta name="generator" content="Hugo 0.152.2">
-    
-    
-    
-      <meta name="robots" content="index, follow">
-    
-    <meta name="author" content="CodeMist">
-    
+<html lang="en" dir="auto">
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>大数据开发笔记 | CodeMist · 记录技术与生活</title>
+<meta name="keywords" content="">
+<meta name="description" content="记录大数据开发、AI 技术与日常学习的点滴探索">
+<meta name="author" content="CodeMist">
+<link rel="canonical" href="http://localhost:1313/categories/bigdata/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4eeb2a64a3de0f36594052b43ee23799783a8ce4e9243cfe8aec759f323813e8.css" integrity="sha256-TusqZKPeDzZZQFK0PuI3mXg6jOTpJDz&#43;iux1nzI4E&#43;g=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/bigdata/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/bigdata/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
+            .list {
+                background: var(--theme);
+            }
 
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-    
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
+    </style>
+</noscript>
+</head>
 
-    
-      
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-    
+</script>
 
-    
-    
-      <link href="/categories/bigdata/index.xml" rel="alternate" type="application/rss+xml" title="CodeMist · 记录技术与生活" />
-      <link href="/categories/bigdata/index.xml" rel="feed" type="application/rss+xml" title="CodeMist · 记录技术与生活" />
-      
-    
-
-    
-      <link rel="canonical" href="https://codemist.org/categories/bigdata/">
-    
-
-    <meta property="og:url" content="https://codemist.org/categories/bigdata/">
-  <meta property="og:site_name" content="CodeMist · 记录技术与生活">
-  <meta property="og:title" content="大数据开发笔记">
-  <meta property="og:description" content="记录大数据开发、AI技术与日常学习的点滴探索">
-  <meta property="og:locale" content="zh_cn">
-  <meta property="og:type" content="website">
-
-  <meta itemprop="name" content="大数据开发笔记">
-  <meta itemprop="description" content="记录大数据开发、AI技术与日常学习的点滴探索">
-  <meta itemprop="datePublished" content="2025-11-07T00:00:00+08:00">
-  <meta itemprop="dateModified" content="2025-11-07T00:00:00+08:00">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="大数据开发笔记">
-  <meta name="twitter:description" content="记录大数据开发、AI技术与日常学习的点滴探索">
-
-      
-    
-	
-  </head><body class="ma0 avenir bg-near-white production">
-
-    
-
-  <header>
-    <div class="pb3-m pb6-l bg-gray">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l center items-center justify-between">
-    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
-      
-        CodeMist · 记录技术与生活
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-        <ul class="pl0 mr3">
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/" title="首页 page">
-              首页
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/posts/" title="文章汇集 page">
-              文章汇集
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/categories/bigdata/" title="大数据开发笔记 page">
-              大数据开发笔记
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/categories/ai/" title="AI page">
-              AI
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/categories/daily-study/" title="日常和学习 page">
-              日常和学习
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/about/" title="关于 page">
-              关于
-            </a>
-          </li>
-          
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="CodeMist · 记录技术与生活 (Alt + H)">CodeMist · 记录技术与生活</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/posts/" title="文章">
+                    <span>文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/bigdata/" title="大数据">
+                    <span class="active">大数据</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/ai/" title="AI">
+                    <span>AI</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-study/" title="学习 · 日常">
+                    <span>学习 · 日常</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
         </ul>
-      
-      <div class="ananke-socials"></div>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/categories/">Categories</a></div>
+  <h1>
+    大数据开发笔记
+    <a href="/categories/bigdata/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
 
-    </div>
-  </div>
-</nav>
-
-      <div class="tc-l pv3 ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          大数据开发笔记
-        </h1>
-        
-      </div>
-    </div>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">解决docker desktop k8s 启动时间长的问题
+    </h2>
   </header>
-
-
-    <main class="pb7" role="main">
-      
-  <article class="cf pa3 pa4-m pa4-l">
-    <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links text-light">
-      <p>Below you will find pages that utilize the taxonomy term “大数据开发笔记”</p>
-    </div>
-  </article>
-  <div class="mw8 center">
-    <section class="flex-ns mt5 flex-wrap justify-around">
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/k8s/%E8%A7%A3%E5%86%B3docker-desktop-k8s-%E5%90%AF%E5%8A%A8%E6%97%B6%E9%97%B4%E9%95%BF%E7%9A%84%E9%97%AE%E9%A2%98/" class="link black dim">
-        解决docker desktop k8s 启动时间长的问题
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Windows 上 k8s 启动卡在 Starting 的一个解决方案。</p>
-    </div>
-    <a href="/posts/k8s/%E8%A7%A3%E5%86%B3docker-desktop-k8s-%E5%90%AF%E5%8A%A8%E6%97%B6%E9%97%B4%E9%95%BF%E7%9A%84%E9%97%AE%E9%A2%98/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <div class="entry-content">
+    <p>Windows 上 k8s 启动卡在 Starting 的一个解决方案。
+...</p>
   </div>
-</div>
+  <footer class="entry-footer"><span title='2025-11-07 00:00:00 +0000 UTC'>2025-11-07</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;CodeMist</footer>
+  <a class="entry-link" aria-label="post link to 解决docker desktop k8s 启动时间长的问题" href="http://localhost:1313/posts/k8s/%E8%A7%A3%E5%86%B3docker-desktop-k8s-%E5%90%AF%E5%8A%A8%E6%97%B6%E9%97%B4%E9%95%BF%E7%9A%84%E9%97%AE%E9%A2%98/"></a>
+</article>
 
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/debezium/%E4%BD%BF%E7%94%A8-debezium-%E7%9A%84-cdc/" class="link black dim">
-        基于 Debezium 的 CDC 数据同步实践
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>本文介绍一个最小可运行的 Change Data Capture (CDC) 演示项目，实现 MySQL 数据库变更到 Kafka 的实时同步。项目包含以下核心组件：</p>
-<p>Docker Compose 配置：启动 MySQL、Kafka、Zookeeper、Debezium Connect 和 Kafka UI</p>
-<p>数据库初始化脚本：创建测试表和初始数据</p>
-<p>连接器注册脚本：配置 Debezium MySQL Connector</p>
-    </div>
-    <a href="/posts/debezium/%E4%BD%BF%E7%94%A8-debezium-%E7%9A%84-cdc/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">基于 Debezium 的 CDC 数据同步实践
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>本文介绍一个最小可运行的 Change Data Capture (CDC) 演示项目，实现 MySQL 数据库变更到 Kafka 的实时同步。项目包含以下核心组件：
+Docker Compose 配置：启动 MySQL、Kafka、Zookeeper、Debezium Connect 和 Kafka UI
+数据库初始化脚本：创建测试表和初始数据
+连接器注册脚本：配置 Debezium MySQL Connector
+...</p>
   </div>
-</div>
+  <footer class="entry-footer"><span title='2025-05-05 00:00:00 +0000 UTC'>2025-05-05</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;CodeMist</footer>
+  <a class="entry-link" aria-label="post link to 基于 Debezium 的 CDC 数据同步实践" href="http://localhost:1313/posts/debezium/%E4%BD%BF%E7%94%A8-debezium-%E7%9A%84-cdc/"></a>
+</article>
 
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/flink/flink-sql-client-catalog%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/" class="link black dim">
-        Flink 重启丢失 Catalog 等记录问题
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>WSL 中 Flink 重启丢失 Catalog 等记录问题</p>
-    </div>
-    <a href="/posts/flink/flink-sql-client-catalog%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Flink 重启丢失 Catalog 等记录问题
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>WSL 中 Flink 重启丢失 Catalog 等记录问题
+...</p>
   </div>
-</div>
+  <footer class="entry-footer"><span title='2025-04-28 00:00:00 +0000 UTC'>2025-04-28</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;CodeMist</footer>
+  <a class="entry-link" aria-label="post link to Flink 重启丢失 Catalog 等记录问题" href="http://localhost:1313/posts/flink/flink-sql-client-catalog%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/"></a>
+</article>
 
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/spark/spark-streaming-%E6%8A%A5%E9%94%99%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/" class="link black dim">
-        Spark Streaming 报错记录
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>部署 Spark Streaming 实现流计算的常见错误。</p>
-    </div>
-    <a href="/posts/spark/spark-streaming-%E6%8A%A5%E9%94%99%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Spark Streaming 报错记录
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>部署 Spark Streaming 实现流计算的常见错误。
+...</p>
   </div>
-</div>
+  <footer class="entry-footer"><span title='2025-04-28 00:00:00 +0000 UTC'>2025-04-28</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;CodeMist</footer>
+  <a class="entry-link" aria-label="post link to Spark Streaming 报错记录" href="http://localhost:1313/posts/spark/spark-streaming-%E6%8A%A5%E9%94%99%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/"></a>
+</article>
 
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/flink/wsl-%E6%9E%84%E5%BB%BA-flink-&#43;-paimon/" class="link black dim">
-        wsl Flink paimon 实践
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>wsl Flink paimon 实践</p>
-    </div>
-    <a href="/posts/flink/wsl-%E6%9E%84%E5%BB%BA-flink-&#43;-paimon/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">wsl Flink paimon 实践
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>wsl Flink paimon 实践
+...</p>
   </div>
-</div>
+  <footer class="entry-footer"><span title='2025-04-28 00:00:00 +0000 UTC'>2025-04-28</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;CodeMist</footer>
+  <a class="entry-link" aria-label="post link to wsl Flink paimon 实践" href="http://localhost:1313/posts/flink/wsl-%E6%9E%84%E5%BB%BA-flink-&#43;-paimon/"></a>
+</article>
 
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/flink/flink-%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/" class="link black dim">
-        wsl Flink 配置项
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>wsl Flink 实践</p>
-    </div>
-    <a href="/posts/flink/flink-%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">wsl Flink 配置项
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>wsl Flink 实践
+...</p>
   </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/kafka/wsl-kafka-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/" class="link black dim">
-        WSL Kafka 安装教程
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>在 Windows WSL 上部署 Kafka</p>
-    </div>
-    <a href="/posts/kafka/wsl-kafka-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/spark/spark-yarn-%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="link black dim">
-        Spark Yarn 启动与关闭的注意事项总结
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>在开发环境中使用 Spark + Hadoop 时，经常会遇到一些“重启就崩”“莫名其妙报错”的情况。这篇文章整理了一些常见的坑和最佳实践，希望能帮你优雅地启动和关闭 Spark/Hadoop 集群。</p>
-    </div>
-    <a href="/posts/spark/spark-yarn-%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/spark/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="link black dim">
-        Spark 机器学习 与 Pytorch 分别
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      
-    </div>
-    <a href="/posts/spark/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/spark/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/" class="link black dim">
-        Spark 的几种启动方式
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      
-    </div>
-    <a href="/posts/spark/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/spark/wsl-%E6%90%AD%E5%BB%BA-spark-debug/" class="link black dim">
-        WSL 下搭建 Spark 调试环境指南
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>这是一篇记录在 WSL 环境下搭建 Spark 调试环境时遇到的问题及其解决方法的博客，方便日后排雷复用。</p>
-    </div>
-    <a href="/posts/spark/wsl-%E6%90%AD%E5%BB%BA-spark-debug/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/spark/spark-wsl-%E9%85%8D%E7%BD%AE/" class="link black dim">
-        WSL 配置 Spark
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>这是一篇介绍使用 Windows WSL 配置 Spark 的教程，包含 Java、Hadoop、Spark 的安装与配置过程。</p>
-    </div>
-    <a href="/posts/spark/spark-wsl-%E9%85%8D%E7%BD%AE/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-    </section>
-  </div>
-
-    </main>
-    <footer class="bg-gray bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://codemist.org/" >
-    &copy;  CodeMist · 记录技术与生活 2025 
-  </a>
-    <div><div class="ananke-socials"></div>
-</div>
-  </div>
+  <footer class="entry-footer"><span title='2025-04-28 00:00:00 +0000 UTC'>2025-04-28</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;CodeMist</footer>
+  <a class="entry-link" aria-label="post link to wsl Flink 配置项" href="http://localhost:1313/posts/flink/flink-%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="http://localhost:1313/categories/bigdata/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
 </footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">CodeMist · 记录技术与生活</a></span> · 
 
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
-<div style="margin-top: 10px; color: #666; font-size: 14px;">
-  总访问量：<span id="busuanzi_value_site_pv"></span> 次 | 
-  访客数：<span id="busuanzi_value_site_uv"></span> 人
-</div>
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
-  </body>
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>
