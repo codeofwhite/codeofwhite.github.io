@@ -12,34 +12,32 @@ permissions:
   id-token: write
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      # 1️⃣ 拉取仓库代码
       - uses: actions/checkout@v4
 
-      # 2️⃣ 安装 Hugo
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
           extended: true
 
-      # 3️⃣ 清理旧 public 文件夹（避免 SRI / CSS/JS 冲突）
-      - name: Clean public folder
-        run: rm -rf public
+      - name: Build
+        run: hugo --minify
 
-      # 4️⃣ 构建 Hugo 静态站，注意 baseURL 指向 GitHub Pages
-      - name: Build Hugo site
-        run: hugo --minify --baseURL "https://codeofwhite.github.io/"
-
-      # 5️⃣ 上传生成的 public 文件到 Pages artifact
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
-      # 6️⃣ 部署到 GitHub Pages
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
