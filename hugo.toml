@@ -1,4 +1,4 @@
-baseURL = 'https://codeofwhite.github.io/'
+baseURL = 'https://codemist.org/'
 languageCode = 'zh-cn'
 title = 'CodeMist · 记录技术与生活'
 theme = 'PaperMod'
