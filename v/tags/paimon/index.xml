@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Paimon on CodeMist · 记录技术与生活</title>
+    <link>https://codemist.org/tags/paimon/</link>
+    <description>Recent content in Paimon on CodeMist · 记录技术与生活</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://codemist.org/tags/paimon/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>wsl Flink paimon 实践</title>
+      <link>https://codemist.org/2025/04/28/wsl-flink-paimon-%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://codemist.org/2025/04/28/wsl-flink-paimon-%E5%AE%9E%E8%B7%B5/</guid>
+      <description>&lt;p&gt;wsl Flink paimon 实践&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

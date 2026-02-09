@@ -5,6 +5,7 @@ categories: ["bigdata"]
 tags: ["Debezium", "Kafka", "CDC", "Docker", "数据同步"]
 draft: false
 summary: "一个最小化的 CDC 演示项目，展示如何使用 Debezium 实现 MySQL 到 Kafka 的数据变更捕获(CDC)"
+featured: true
 ---
 
 本文介绍一个最小可运行的 Change Data Capture (CDC) 演示项目，实现 MySQL 数据库变更到 Kafka 的实时同步。项目包含以下核心组件：

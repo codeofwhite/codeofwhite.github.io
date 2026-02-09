@@ -1,64 +1,104 @@
 baseURL = 'https://codemist.org/'
 languageCode = 'zh-cn'
 title = 'CodeMist · 记录技术与生活'
-theme = 'ananke'
+theme = 'PaperMod'
 
-# 站点元信息（对应三个核心分类）
+hasCJKLanguage = true
+defaultContentLanguage = "zh-cn"
+
+permalinks = { posts = "/:year/:month/:day/:slug/" }
+
 [params]
   author = "CodeMist"
-  description = "记录大数据开发、AI技术与日常学习的点滴探索"
-  background_color_class = "bg-gray"
-  # 支持暗色模式
-  text_color = "text-light"
-  show_reading_time = true
+  description = "专注大数据、AI、学习记录与生活随笔"
 
-# 菜单设置
+  # 阅读体验核心（真正舒服的中文排版）
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+  ContentWidth = "780px"
+  LineHeight = 1.75
+
+  # 最耐看、最现代的字体组合
+  Fonts = {Regular = "Inter, Noto Sans SC, sans-serif", Mono = "JetBrains Mono, Consolas, monospace"}
+
+  # 主题（自动明暗，最舒服）
+  defaultTheme = "auto"
+  disableThemeToggle = false
+
+  # 搜索
+  enableSearch = true
+  SearchToC = false
+
+  # 首页简介（干净、不拥挤、高级）
+  homeInfoParams = {Title = "CodeMist", Content = "专注大数据开发｜人工智能实践｜学习记录与生活随笔"}
+
+  # 列表样式：不要丑卡片 → 用 list 最清爽、最直观
+  listLayout = "list"
+  disableSpecial1stPost = true
+  disableScrollToTop = false
+
+# ------------------------------
+# 导航：精简、直观、不杂乱
+# ------------------------------
 [[menu.main]]
-  identifier = "home"
   name = "首页"
   url = "/"
   weight = 1
 
 [[menu.main]]
-  identifier = "posts"
-  name = "文章汇集"
+  name = "文章"
   url = "/posts/"
   weight = 2
 
 [[menu.main]]
-  identifier = "bigdata"
-  name = "大数据开发笔记"
+  name = "大数据"
   url = "/categories/bigdata/"
   weight = 3
 
 [[menu.main]]
-  identifier = "ai"
   name = "AI"
   url = "/categories/ai/"
   weight = 4
 
 [[menu.main]]
-  identifier = "daily-study"
-  name = "日常和学习"
+  name = "学习生活"
   url = "/categories/daily-study/"
   weight = 5
 
 [[menu.main]]
-  identifier = "about"
-  name = "关于"
-  url = "/about/"
+  name = "标签"
+  url = "/tags/"
   weight = 6
 
-# 分类与标签
+[[menu.main]]
+  name = "关于"
+  url = "/about/"
+  weight = 7
+
 [taxonomies]
   category = "categories"
   tag = "tags"
 
-# Markdown 渲染设置
+# ------------------------------
+# 代码渲染 + 目录
+# ------------------------------
 [markup]
   [markup.highlight]
     noClasses = false
-    style = "monokai"
+    style = "github"
+    lineNos = false
   [markup.tableOfContents]
     startLevel = 2
     endLevel = 4
+    ordered = false
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]

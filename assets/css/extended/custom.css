@@ -1,0 +1,178 @@
+/* 全局基础样式（适配明暗模式） */
+:root {
+  --text-main: #222;
+  --text-secondary: #555;
+  --text-tertiary: #888;
+  --text-quaternary: #999;
+  --border-light: #f0f0f0;
+  --border-lighter: #f3f3f3;
+  --bg-hover: #f7f7f7;
+  --bg-card: #fff;
+  --bg-main: #fff;
+}
+
+/* 暗色模式变量覆盖 */
+html.dark {
+  --text-main: #e5e5e5;
+  --text-secondary: #b8b8b8;
+  --text-tertiary: #999;
+  --text-quaternary: #888;
+  --border-light: #333;
+  --border-lighter: #2a2a2a;
+  --bg-hover: #2a2a2a;
+  --bg-card: #1e1e1e;
+  --bg-main: #121212;
+}
+
+/* 首页容器 */
+.home-page {
+  max-width: min(96%, 860px);
+  margin: 0 auto;
+  padding: 0 1rem;
+  background-color: var(--bg-main);
+}
+
+/* 头部简介 */
+.home-header {
+  margin: 2rem 0 2.5rem 0;
+  text-align: center;
+}
+
+.home-header img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.home-header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.6rem;
+}
+
+.home-header p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* 分类入口 */
+.category-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.category-buttons a {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  background-color: var(--bg-card);
+}
+
+.category-buttons a:hover {
+  background-color: var(--bg-hover);
+}
+
+/* 精选博客 */
+.featured-posts {
+  margin-bottom: 3rem;
+}
+
+.featured-posts h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.featured-posts .post-card {
+  padding: 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  background-color: var(--bg-card);
+  margin-bottom: 1rem;
+}
+
+.featured-posts .post-card h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 0.4rem 0;
+}
+
+.featured-posts .post-card a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.featured-posts .post-card .meta {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+/* 最新文章 */
+.latest-posts {
+  margin-bottom: 3rem;
+}
+
+.latest-posts .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.latest-posts .header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.latest-posts .header a {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.latest-posts article {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-lighter);
+}
+
+.latest-posts article h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 0.4rem 0;
+}
+
+.latest-posts article a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.latest-posts article .meta {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+/* 访问统计 */
+.visit-stats {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-quaternary);
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-lighter);
+}
+
+.visit-stats span {
+  margin-right: 1rem;
+}

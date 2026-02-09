@@ -2,7 +2,7 @@
 
 title: "WSL 下搭建 Spark 调试环境指南"
 date: 2025-04-26
-categories: ["bigdata"]  
+categories: ["study"]  
 tags: ["WSL", "Spark", "Hadoop"]
 draft: false
 

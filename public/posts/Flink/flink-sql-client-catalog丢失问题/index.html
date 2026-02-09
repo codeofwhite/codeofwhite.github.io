@@ -1,166 +1,152 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>Flink 重启丢失 Catalog 等记录问题 | CodeMist · 记录技术与生活</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="WSL 中 Flink 重启丢失 Catalog 等记录问题">
-    <meta name="generator" content="Hugo 0.152.2">
-    
-    
-    
-      <meta name="robots" content="index, follow">
-    
-    <meta name="author" content="CodeMist">
-    
+<html lang="zh-cn" dir="auto">
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Flink 重启丢失 Catalog 等记录问题 | CodeMist · 记录技术与生活</title>
+<meta name="keywords" content="wsl, flink">
+<meta name="description" content="WSL 中 Flink 重启丢失 Catalog 等记录问题">
+<meta name="author" content="CodeMist">
+<link rel="canonical" href="http://localhost:1313/posts/flink/flink-sql-client-catalog%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css" integrity="sha256-bammPSWpYIvKL3&#43;QegMOiHp908PzkY5MwRMSk2FBS9o=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh-cn" href="http://localhost:1313/posts/flink/flink-sql-client-catalog%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
+            .list {
+                background: var(--theme);
+            }
 
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-    
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
+    </style>
+</noscript>
+</head>
 
-    
-      
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-    
+</script>
 
-    
-
-    
-      <link rel="canonical" href="https://codemist.org/posts/flink/flink-sql-client-catalog%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/">
-    
-
-    <meta property="og:url" content="https://codemist.org/posts/flink/flink-sql-client-catalog%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/">
-  <meta property="og:site_name" content="CodeMist · 记录技术与生活">
-  <meta property="og:title" content="Flink 重启丢失 Catalog 等记录问题">
-  <meta property="og:description" content="WSL 中 Flink 重启丢失 Catalog 等记录问题">
-  <meta property="og:locale" content="zh_cn">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-04-28T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-04-28T00:00:00+00:00">
-    <meta property="article:tag" content="WSL">
-    <meta property="article:tag" content="Flink">
-
-  <meta itemprop="name" content="Flink 重启丢失 Catalog 等记录问题">
-  <meta itemprop="description" content="WSL 中 Flink 重启丢失 Catalog 等记录问题">
-  <meta itemprop="datePublished" content="2025-04-28T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-04-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="162">
-  <meta itemprop="keywords" content="WSL,Flink">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Flink 重启丢失 Catalog 等记录问题">
-  <meta name="twitter:description" content="WSL 中 Flink 重启丢失 Catalog 等记录问题">
-
-      
-    
-	
-  </head><body class="ma0 avenir bg-near-white production">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-gray">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l center items-center justify-between">
-    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
-      
-        CodeMist · 记录技术与生活
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-        <ul class="pl0 mr3">
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/" title="首页 page">
-              首页
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/posts/" title="文章汇集 page">
-              文章汇集
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/categories/bigdata/" title="大数据开发笔记 page">
-              大数据开发笔记
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/categories/ai/" title="AI page">
-              AI
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/categories/daily-study/" title="日常和学习 page">
-              日常和学习
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/about/" title="关于 page">
-              关于
-            </a>
-          </li>
-          
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="CodeMist · 记录技术与生活 (Alt + H)">CodeMist · 记录技术与生活</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="文章汇集">
+                    <span>文章汇集</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/bigdata/" title="大数据开发笔记">
+                    <span>大数据开发笔记</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/ai/" title="AI">
+                    <span>AI</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-study/" title="日常和学习">
+                    <span>日常和学习</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
         </ul>
-      
-      <div class="ananke-socials"></div>
+    </nav>
+</header>
+<main class="main">
 
-    </div>
-  </div>
-</nav>
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Flink 重启丢失 Catalog 等记录问题
+    </h1>
+    <div class="post-meta"><span title='2025-04-28 00:00:00 +0000 UTC'>April 28, 2025</span>&nbsp;·&nbsp;CodeMist
 
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  
-  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Posts
-      </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1">Flink 重启丢失 Catalog 等记录问题</h1>
-      
-      <p class="tracked"><strong>CodeMist</strong>
-      </p>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2025-04-28T00:00:00Z">April 28, 2025</time>
-      
-
-      
-      
-        <span class="f6 mv4 dib tracked"> - One minute read </span>
-        <span class="f6 mv4 dib tracked"> - 162 words </span>
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links text-light pr4-l w-two-thirds-l"><p>WSL 中 Flink 重启丢失 Catalog 等记录问题</p>
+</div>
+  </header> 
+  <div class="post-content"><p>WSL 中 Flink 重启丢失 Catalog 等记录问题</p>
 <p>Flink SQL Client 每次启动时「catalog（目录）、table（表）」等对象消失，主要是因为 <strong>默认的 catalog 和 database 配置是临时的，且没有持久化到外部存储或配置文件中</strong>。以下是造成这种现象的原因及解决方案。</p>
 <hr>
-<h3 id="-原因分析">🌐 原因分析</h3>
+<h3 id="-原因分析">🌐 原因分析<a hidden class="anchor" aria-hidden="true" href="#-原因分析">#</a></h3>
 <ol>
 <li>
 <p><strong>默认使用内存 Catalog（<code>default_catalog</code>）</strong></p>
@@ -183,8 +169,8 @@
 </li>
 </ol>
 <hr>
-<h3 id="-解决方案">✅ 解决方案</h3>
-<h4 id="方法一使用持久化-catalog推荐">方法一：使用持久化 Catalog（推荐）</h4>
+<h3 id="-解决方案">✅ 解决方案<a hidden class="anchor" aria-hidden="true" href="#-解决方案">#</a></h3>
+<h4 id="方法一使用持久化-catalog推荐">方法一：使用持久化 Catalog（推荐）<a hidden class="anchor" aria-hidden="true" href="#方法一使用持久化-catalog推荐">#</a></h4>
 <ul>
 <li>示例：使用 HiveCatalog</li>
 </ul>
@@ -196,7 +182,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">USE</span><span class="w"> </span><span class="k">CATALOG</span><span class="w"> </span><span class="n">my_hive</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><p>👉 使用 HiveCatalog 后，所有表会注册进 Hive Metastore，下次重启依然存在。</p>
 <hr>
-<h4 id="方法二使用-filesystem-catalog轻量级方案">方法二：使用 FileSystem Catalog（轻量级方案）</h4>
+<h4 id="方法二使用-filesystem-catalog轻量级方案">方法二：使用 FileSystem Catalog（轻量级方案）<a hidden class="anchor" aria-hidden="true" href="#方法二使用-filesystem-catalog轻量级方案">#</a></h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">CATALOG</span><span class="w"> </span><span class="n">my_fs</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="p">(</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s1">&#39;type&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;filesystem&#39;</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s1">&#39;default-database&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w">
@@ -207,7 +193,7 @@
 <li>重启 Flink SQL Client 并重新 <code>USE CATALOG my_fs</code> 后可再次访问。</li>
 </ul>
 <hr>
-<h4 id="方法三配置初始化脚本">方法三：配置初始化脚本</h4>
+<h4 id="方法三配置初始化脚本">方法三：配置初始化脚本<a hidden class="anchor" aria-hidden="true" href="#方法三配置初始化脚本">#</a></h4>
 <p>可以在 Flink SQL Client 启动时使用初始化 SQL 脚本或 YAML 配置：</p>
 <ul>
 <li><strong>配置 <code>sql-client-defaults.yaml</code>：</strong></li>
@@ -220,71 +206,94 @@
 <li>放入 <code>${FLINK_HOME}/conf/sql-client-defaults.yaml</code> 中，每次启动 SQL Client 时自动加载。</li>
 </ul>
 <hr>
-<h3 id="-补充建议">📌 补充建议</h3>
+<h3 id="-补充建议">📌 补充建议<a hidden class="anchor" aria-hidden="true" href="#-补充建议">#</a></h3>
 <ul>
 <li>对于生产环境或长期项目，<strong>一定不要依赖 default_catalog</strong>。</li>
 <li>推荐使用 HiveCatalog 或 FileSystemCatalog 等持久化方案。</li>
 <li>对于实验环境，建议将建表语句保存成 SQL 脚本，每次启动后自动执行。</li>
 </ul>
-<hr><ul class="pa0">
-  
-   <li class="list di">
-     <a href="/tags/wsl/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">WSL</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/flink/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Flink</a>
-   </li>
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
+<hr>
 
-    <aside class="w-30-l mt6-l">
-
-
-
-
-  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
-    <p class="f5 b mb3">Related</p>
-    <ul class="pa0 list">
-	   
-	     <li  class="mb2">
-          <a href="/posts/flink/wsl-%E6%9E%84%E5%BB%BA-flink-&#43;-paimon/">wsl Flink paimon 实践</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/posts/flink/flink-%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">wsl Flink 配置项</a>
-        </li>
-	    
-    </ul>
-</div>
-
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-gray bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://codemist.org/" >
-    &copy;  CodeMist · 记录技术与生活 2025 
-  </a>
-    <div><div class="ananke-socials"></div>
-</div>
   </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/wsl/">WSL</a></li>
+      <li><a href="http://localhost:1313/tags/flink/">Flink</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">CodeMist · 记录技术与生活</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
 </footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
-<div style="margin-top: 10px; color: #666; font-size: 14px;">
-  总访问量：<span id="busuanzi_value_site_pv"></span> 次 | 
-  访客数：<span id="busuanzi_value_site_uv"></span> 人
-</div>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
-  </body>
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

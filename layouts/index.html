@@ -1,0 +1,63 @@
+{{ define "main" }}
+<main class="home-page">
+  <!-- 头部简介 -->
+  {{ if .Site.Params.homeInfoParams }}
+  <div class="home-header">
+    {{ if .Site.Params.homeInfoParams.Image }}
+    <img src="{{ .Site.Params.homeInfoParams.Image }}" alt="Avatar">
+    {{ end }}
+    <h1>{{ .Site.Params.homeInfoParams.Title }}</h1>
+    <p>{{ .Site.Params.homeInfoParams.Content | safeHTML }}</p>
+  </div>
+  {{ end }}
+
+  <!-- 分类快捷入口 -->
+  {{ if .Site.Params.featuredCategories }}
+  <div class="category-buttons">
+    {{ range .Site.Params.featuredCategories }}
+    <a href="{{ .url }}">{{ .icon }} {{ .name }}</a>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  <!-- 精选博客 -->
+  {{ $featured := where .Site.RegularPages "Params.featured" "==" true }}
+  {{ if $featured }}
+  <section class="featured-posts">
+    <h2>✨ 精选博客</h2>
+    {{ range first 3 $featured }}
+    <div class="post-card">
+      <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+      <div class="meta">
+        {{ .Date.Format "2006-01-02" }} · {{ .ReadingTime }} 分钟
+      </div>
+    </div>
+    {{ end }}
+  </section>
+  {{ end }}
+
+  <!-- 最新文章 -->
+  <section class="latest-posts">
+    <div class="header">
+      <h2>📝 最新发布</h2>
+      <a href="/posts/">查看全部 →</a>
+    </div>
+
+    {{ range first 6 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+    <article>
+      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+      <div class="meta">
+        {{ .Date.Format "2006-01-02" }} · {{ .ReadingTime }} 分钟
+        {{ with .Params.categories }}· {{ index . 0 }}{{ end }}
+      </div>
+    </article>
+    {{ end }}
+  </section>
+
+  <!-- 访问统计 -->
+  <div class="visit-stats">
+    <span id="busuanzi_container_site_uv">访客数 <span id="busuanzi_value_site_uv"></span></span>
+    <span id="busuanzi_container_site_pv">总浏览 <span id="busuanzi_value_site_pv"></span></span>
+  </div>
+</main>
+{{ end }}

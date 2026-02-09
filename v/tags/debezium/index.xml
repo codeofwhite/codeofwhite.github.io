@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Debezium on CodeMist · 记录技术与生活</title>
+    <link>https://codemist.org/tags/debezium/</link>
+    <description>Recent content in Debezium on CodeMist · 记录技术与生活</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 05 May 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://codemist.org/tags/debezium/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>基于 Debezium 的 CDC 数据同步实践</title>
+      <link>https://codemist.org/2025/05/05/%E5%9F%BA%E4%BA%8E-debezium-%E7%9A%84-cdc-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://codemist.org/2025/05/05/%E5%9F%BA%E4%BA%8E-debezium-%E7%9A%84-cdc-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%AE%9E%E8%B7%B5/</guid>
+      <description>&lt;p&gt;本文介绍一个最小可运行的 Change Data Capture (CDC) 演示项目，实现 MySQL 数据库变更到 Kafka 的实时同步。项目包含以下核心组件：&lt;/p&gt;
+&lt;p&gt;Docker Compose 配置：启动 MySQL、Kafka、Zookeeper、Debezium Connect 和 Kafka UI&lt;/p&gt;
+&lt;p&gt;数据库初始化脚本：创建测试表和初始数据&lt;/p&gt;
+&lt;p&gt;连接器注册脚本：配置 Debezium MySQL Connector&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

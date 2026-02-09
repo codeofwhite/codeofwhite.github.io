@@ -1,177 +1,162 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>wsl Flink paimon 实践 | CodeMist · 记录技术与生活</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="wsl Flink paimon 实践">
-    <meta name="generator" content="Hugo 0.152.2">
-    
-    
-    
-      <meta name="robots" content="index, follow">
-    
-    <meta name="author" content="CodeMist">
-    
+<html lang="zh-cn" dir="auto">
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>wsl Flink paimon 实践 | CodeMist · 记录技术与生活</title>
+<meta name="keywords" content="wsl, flink, paimon">
+<meta name="description" content="wsl Flink paimon 实践">
+<meta name="author" content="CodeMist">
+<link rel="canonical" href="http://localhost:1313/posts/flink/wsl-%E6%9E%84%E5%BB%BA-flink-&#43;-paimon/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css" integrity="sha256-bammPSWpYIvKL3&#43;QegMOiHp908PzkY5MwRMSk2FBS9o=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh-cn" href="http://localhost:1313/posts/flink/wsl-%E6%9E%84%E5%BB%BA-flink-&#43;-paimon/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
+            .list {
+                background: var(--theme);
+            }
 
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-    
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
+    </style>
+</noscript>
+</head>
 
-    
-      
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-    
+</script>
 
-    
-
-    
-      <link rel="canonical" href="https://codemist.org/posts/flink/wsl-%E6%9E%84%E5%BB%BA-flink-&#43;-paimon/">
-    
-
-    <meta property="og:url" content="https://codemist.org/posts/flink/wsl-%E6%9E%84%E5%BB%BA-flink-&#43;-paimon/">
-  <meta property="og:site_name" content="CodeMist · 记录技术与生活">
-  <meta property="og:title" content="wsl Flink paimon 实践">
-  <meta property="og:description" content="wsl Flink paimon 实践">
-  <meta property="og:locale" content="zh_cn">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-04-28T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-04-28T00:00:00+00:00">
-    <meta property="article:tag" content="WSL">
-    <meta property="article:tag" content="Flink">
-    <meta property="article:tag" content="Paimon">
-
-  <meta itemprop="name" content="wsl Flink paimon 实践">
-  <meta itemprop="description" content="wsl Flink paimon 实践">
-  <meta itemprop="datePublished" content="2025-04-28T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-04-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="286">
-  <meta itemprop="keywords" content="WSL,Flink,Paimon">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="wsl Flink paimon 实践">
-  <meta name="twitter:description" content="wsl Flink paimon 实践">
-
-      
-    
-	
-  </head><body class="ma0 avenir bg-near-white production">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-gray">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l center items-center justify-between">
-    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
-      
-        CodeMist · 记录技术与生活
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-        <ul class="pl0 mr3">
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/" title="首页 page">
-              首页
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/posts/" title="文章汇集 page">
-              文章汇集
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/categories/bigdata/" title="大数据开发笔记 page">
-              大数据开发笔记
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/categories/ai/" title="AI page">
-              AI
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/categories/daily-study/" title="日常和学习 page">
-              日常和学习
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/about/" title="关于 page">
-              关于
-            </a>
-          </li>
-          
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="CodeMist · 记录技术与生活 (Alt + H)">CodeMist · 记录技术与生活</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="首页">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="文章汇集">
+                    <span>文章汇集</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/bigdata/" title="大数据开发笔记">
+                    <span>大数据开发笔记</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/ai/" title="AI">
+                    <span>AI</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/daily-study/" title="日常和学习">
+                    <span>日常和学习</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
         </ul>
-      
-      <div class="ananke-socials"></div>
+    </nav>
+</header>
+<main class="main">
 
-    </div>
-  </div>
-</nav>
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      wsl Flink paimon 实践
+    </h1>
+    <div class="post-meta"><span title='2025-04-28 00:00:00 +0000 UTC'>April 28, 2025</span>&nbsp;·&nbsp;CodeMist
 
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  
-  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Posts
-      </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1">wsl Flink paimon 实践</h1>
-      
-      <p class="tracked"><strong>CodeMist</strong>
-      </p>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2025-04-28T00:00:00Z">April 28, 2025</time>
-      
-
-      
-      
-        <span class="f6 mv4 dib tracked"> - 2 minutes read </span>
-        <span class="f6 mv4 dib tracked"> - 286 words </span>
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links text-light pr4-l w-two-thirds-l"><p>wsl Flink paimon 实践</p>
+</div>
+  </header> 
+  <div class="post-content"><p>wsl Flink paimon 实践</p>
 <p>使用 Apache Paimon + Apache Flink + WSL（Windows Subsystem for Linux）可以高效实现大规模数据湖实时处理和分析。以下是这三者结合使用的 <strong>最佳实践指南</strong>，包括开发环境配置、作业运行、表操作与调试建议等方面。</p>
 <hr>
-<h2 id="-一环境准备wsl">✅ 一、环境准备（WSL）</h2>
-<h3 id="1-安装-wsl-和-ubuntu">1. 安装 WSL 和 Ubuntu</h3>
+<h2 id="-一环境准备wsl">✅ 一、环境准备（WSL）<a hidden class="anchor" aria-hidden="true" href="#-一环境准备wsl">#</a></h2>
+<h3 id="1-安装-wsl-和-ubuntu">1. 安装 WSL 和 Ubuntu<a hidden class="anchor" aria-hidden="true" href="#1-安装-wsl-和-ubuntu">#</a></h3>
 <p>确保你使用的是 <strong>WSL2</strong>，推荐安装 Ubuntu 20.04/22.04：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsl --install -d Ubuntu
-</span></span></code></pre></div><h3 id="2-安装-java-和-maven">2. 安装 Java 和 Maven</h3>
+</span></span></code></pre></div><h3 id="2-安装-java-和-maven">2. 安装 Java 和 Maven<a hidden class="anchor" aria-hidden="true" href="#2-安装-java-和-maven">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update
 </span></span><span class="line"><span class="cl">sudo apt install openjdk-17-jdk maven -y
-</span></span></code></pre></div><h3 id="3-安装-flink">3. 安装 Flink</h3>
+</span></span></code></pre></div><h3 id="3-安装-flink">3. 安装 Flink<a hidden class="anchor" aria-hidden="true" href="#3-安装-flink">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://downloads.apache.org/flink/flink-1.17.1/flink-1.17.1-bin-scala_2.12.tgz
 </span></span><span class="line"><span class="cl">tar -xvzf flink-1.17.1-bin-scala_2.12.tgz
-</span></span></code></pre></div><h3 id="4-安装-paimon">4. 安装 Paimon</h3>
+</span></span></code></pre></div><h3 id="4-安装-paimon">4. 安装 Paimon<a hidden class="anchor" aria-hidden="true" href="#4-安装-paimon">#</a></h3>
 <p>可直接使用预编译的 paimon-flink jar，也可源码编译。</p>
 <ul>
 <li>推荐版本：Paimon 0.6+</li>
@@ -182,20 +167,20 @@
 <li>解压后，将 <code>paimon-flink-*.jar</code> 放入 Flink 的 <code>lib/</code> 目录中。</li>
 </ul>
 <hr>
-<h2 id="-二flink--paimon-集成要点">✅ 二、Flink + Paimon 集成要点</h2>
-<h3 id="1-配置-flink_home">1. 配置 FLINK_HOME</h3>
+<h2 id="-二flink--paimon-集成要点">✅ 二、Flink + Paimon 集成要点<a hidden class="anchor" aria-hidden="true" href="#-二flink--paimon-集成要点">#</a></h2>
+<h3 id="1-配置-flink_home">1. 配置 FLINK_HOME<a hidden class="anchor" aria-hidden="true" href="#1-配置-flink_home">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">FLINK_HOME</span><span class="o">=</span>~/flink-1.17.1
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$FLINK_HOME</span>/bin:<span class="nv">$PATH</span>
-</span></span></code></pre></div><h3 id="2-启动-flink-集群本地模式">2. 启动 Flink 集群（本地模式）</h3>
+</span></span></code></pre></div><h3 id="2-启动-flink-集群本地模式">2. 启动 Flink 集群（本地模式）<a hidden class="anchor" aria-hidden="true" href="#2-启动-flink-集群本地模式">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">start-cluster.sh
-</span></span></code></pre></div><h3 id="3-启动-sql-客户端推荐使用-sql-cli">3. 启动 SQL 客户端（推荐使用 SQL CLI）</h3>
+</span></span></code></pre></div><h3 id="3-启动-sql-客户端推荐使用-sql-cli">3. 启动 SQL 客户端（推荐使用 SQL CLI）<a hidden class="anchor" aria-hidden="true" href="#3-启动-sql-客户端推荐使用-sql-cli">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sql-client.sh
-</span></span></code></pre></div><h3 id="复制-jar-包到你的-flink-里面需要下载-hadoop">复制 jar 包到你的 flink 里面（需要下载 hadoop）</h3>
+</span></span></code></pre></div><h3 id="复制-jar-包到你的-flink-里面需要下载-hadoop">复制 jar 包到你的 flink 里面（需要下载 hadoop）<a hidden class="anchor" aria-hidden="true" href="#复制-jar-包到你的-flink-里面需要下载-hadoop">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp /opt/module/hadoop-3.4.1/share/hadoop/common/hadoop-common-*.jar .
 </span></span><span class="line"><span class="cl">cp /opt/module/hadoop-3.4.1/share/hadoop/mapreduce/hadoop-mapreduce-client-core-*.jar .
 </span></span><span class="line"><span class="cl">cp /opt/module/hadoop-3.4.1/share/hadoop/hdfs/hadoop-hdfs-*.jar .
 </span></span><span class="line"><span class="cl">cp /opt/module/hadoop-3.4.1/share/hadoop/common/hadoop-auth-*.jar .
-</span></span></code></pre></div><h3 id="4-加载-paimon-catalog">4. 加载 Paimon Catalog</h3>
+</span></span></code></pre></div><h3 id="4-加载-paimon-catalog">4. 加载 Paimon Catalog<a hidden class="anchor" aria-hidden="true" href="#4-加载-paimon-catalog">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">CATALOG</span><span class="w"> </span><span class="n">paimon</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="p">(</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s1">&#39;type&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;paimon&#39;</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s1">&#39;warehouse&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;file:///home/your_user/paimon-warehouse&#39;</span><span class="w">
@@ -203,8 +188,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">USE</span><span class="w"> </span><span class="k">CATALOG</span><span class="w"> </span><span class="n">paimon</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><hr>
-<h2 id="-三表定义与最佳实践">✅ 三、表定义与最佳实践</h2>
-<h3 id="1-创建表示例以流数据写入">1. 创建表（示例：以流数据写入）</h3>
+<h2 id="-三表定义与最佳实践">✅ 三、表定义与最佳实践<a hidden class="anchor" aria-hidden="true" href="#-三表定义与最佳实践">#</a></h2>
+<h3 id="1-创建表示例以流数据写入">1. 创建表（示例：以流数据写入）<a hidden class="anchor" aria-hidden="true" href="#1-创建表示例以流数据写入">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">user_events</span><span class="w"> </span><span class="p">(</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">user_id</span><span class="w"> </span><span class="nb">BIGINT</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">event_type</span><span class="w"> </span><span class="n">STRING</span><span class="p">,</span><span class="w">
@@ -216,13 +201,13 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s1">&#39;file.format&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;parquet&#39;</span><span class="p">,</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s1">&#39;sink.parallelism&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h3 id="2-数据写入示例">2. 数据写入示例</h3>
+</span></span></span></code></pre></div><h3 id="2-数据写入示例">2. 数据写入示例<a hidden class="anchor" aria-hidden="true" href="#2-数据写入示例">#</a></h3>
 <p>使用 DataStream 或 SQL 插入：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">user_events</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">event_type</span><span class="p">,</span><span class="w"> </span><span class="n">event_time</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">source_table</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><hr>
-<h2 id="-四实时查询streaming-query">✅ 四、实时查询（Streaming Query）</h2>
+<h2 id="-四实时查询streaming-query">✅ 四、实时查询（Streaming Query）<a hidden class="anchor" aria-hidden="true" href="#-四实时查询streaming-query">#</a></h2>
 <p>使用 <code>Flink SQL</code> 或 <code>Flink DataStream</code> 读取 Paimon 表：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 实时读取（ChangeLog Mode）
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">user_events</span><span class="w"> </span><span class="cm">/*+ OPTIONS(&#39;scan.mode&#39;=&#39;incremental&#39;) */</span><span class="p">;</span><span class="w">
@@ -232,7 +217,7 @@
 <li><code>log.system=none</code>：无日志系统，可选 kafka/none。</li>
 </ul>
 <hr>
-<h2 id="-五性能调优建议">✅ 五、性能调优建议</h2>
+<h2 id="-五性能调优建议">✅ 五、性能调优建议<a hidden class="anchor" aria-hidden="true" href="#-五性能调优建议">#</a></h2>
 <table>
   <thead>
       <tr>
@@ -264,83 +249,103 @@
   </tbody>
 </table>
 <hr>
-<h2 id="-六调试建议wsl--flink">✅ 六、调试建议（WSL + Flink）</h2>
+<h2 id="-六调试建议wsl--flink">✅ 六、调试建议（WSL + Flink）<a hidden class="anchor" aria-hidden="true" href="#-六调试建议wsl--flink">#</a></h2>
 <ul>
 <li>使用 <code>flink run -d</code> 提交任务，使用 <code>flink list</code> 查看运行状态。</li>
 <li>Flink 日志目录位于 <code>flink/log/</code>，可用 <code>tail -f</code> 监控。</li>
 <li>Paimon 的元数据与数据均在 <code>warehouse</code> 路径中，WSL 中使用 <code>file:///mnt/c/...</code> 指定 Windows 路径。</li>
 </ul>
 <hr>
-<h2 id="-七典型应用场景">✅ 七、典型应用场景</h2>
+<h2 id="-七典型应用场景">✅ 七、典型应用场景<a hidden class="anchor" aria-hidden="true" href="#-七典型应用场景">#</a></h2>
 <ul>
 <li>✅ 实时数据湖（Kafka → Paimon → Flink/Trino）</li>
 <li>✅ 数据版本控制与增量消费（支持 UPSERT/MERGE）</li>
 <li>✅ 大规模离线+流批一体处理</li>
 <li>✅ 实时维度建模（DIM 表 CDC 更新）</li>
 </ul>
-<hr><ul class="pa0">
-  
-   <li class="list di">
-     <a href="/tags/wsl/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">WSL</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/flink/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Flink</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/paimon/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Paimon</a>
-   </li>
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
+<hr>
 
-    <aside class="w-30-l mt6-l">
-
-
-
-
-  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
-    <p class="f5 b mb3">Related</p>
-    <ul class="pa0 list">
-	   
-	     <li  class="mb2">
-          <a href="/posts/flink/flink-sql-client-catalog%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/">Flink 重启丢失 Catalog 等记录问题</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/posts/flink/flink-%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">wsl Flink 配置项</a>
-        </li>
-	    
-    </ul>
-</div>
-
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-gray bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://codemist.org/" >
-    &copy;  CodeMist · 记录技术与生活 2025 
-  </a>
-    <div><div class="ananke-socials"></div>
-</div>
   </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/wsl/">WSL</a></li>
+      <li><a href="http://localhost:1313/tags/flink/">Flink</a></li>
+      <li><a href="http://localhost:1313/tags/paimon/">Paimon</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">CodeMist · 记录技术与生活</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
 </footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
-<div style="margin-top: 10px; color: #666; font-size: 14px;">
-  总访问量：<span id="busuanzi_value_site_pv"></span> 次 | 
-  访客数：<span id="busuanzi_value_site_uv"></span> 人
-</div>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
-  </body>
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

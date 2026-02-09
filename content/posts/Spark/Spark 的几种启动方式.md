@@ -2,7 +2,7 @@
 
 title: "Spark 的几种启动方式"
 date: 2025-04-26
-categories: ["bigdata"]  
+categories: ["study"]  
 tags: ["WSL", "Spark", "Hadoop"]
 draft: false
 

@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Spark on CodeMist · 记录技术与生活</title>
-    <link>https://codemist.org/tags/spark/</link>
+    <link>http://localhost:1313/tags/spark/</link>
     <description>Recent content in Spark on CodeMist · 记录技术与生活</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.152.2</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://codemist.org/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/spark/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spark Streaming 报错记录</title>
-      <link>https://codemist.org/posts/spark/spark-streaming-%E6%8A%A5%E9%94%99%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</link>
+      <link>http://localhost:1313/2025/04/28/spark-streaming-%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://codemist.org/posts/spark/spark-streaming-%E6%8A%A5%E9%94%99%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</guid>
+      <guid>http://localhost:1313/2025/04/28/spark-streaming-%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/</guid>
       <description>&lt;p&gt;部署 Spark Streaming 实现流计算的常见错误。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Spark Yarn 启动与关闭的注意事项总结</title>
-      <link>https://codemist.org/posts/spark/spark-yarn-%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>
+      <link>http://localhost:1313/2025/04/26/spark-yarn-%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%85%B3%E9%97%AD%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://codemist.org/posts/spark/spark-yarn-%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
+      <guid>http://localhost:1313/2025/04/26/spark-yarn-%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%85%B3%E9%97%AD%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E6%80%BB%E7%BB%93/</guid>
       <description>&lt;p&gt;在开发环境中使用 Spark + Hadoop 时，经常会遇到一些“重启就崩”“莫名其妙报错”的情况。这篇文章整理了一些常见的坑和最佳实践，希望能帮你优雅地启动和关闭 Spark/Hadoop 集群。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Spark 机器学习 与 Pytorch 分别</title>
-      <link>https://codemist.org/posts/spark/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+      <title>Spark 的几种启动方式</title>
+      <link>http://localhost:1313/2025/04/26/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/</link>
       <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://codemist.org/posts/spark/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
+      <guid>http://localhost:1313/2025/04/26/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/</guid>
       <description></description>
     </item>
     <item>
-      <title>Spark 的几种启动方式</title>
-      <link>https://codemist.org/posts/spark/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/</link>
+      <title>Spark 机器学习 与 Pytorch 分别</title>
+      <link>http://localhost:1313/2025/04/26/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E4%B8%8E-pytorch-%E5%88%86%E5%88%AB/</link>
       <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://codemist.org/posts/spark/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/</guid>
+      <guid>http://localhost:1313/2025/04/26/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E4%B8%8E-pytorch-%E5%88%86%E5%88%AB/</guid>
       <description></description>
     </item>
     <item>
       <title>WSL 下搭建 Spark 调试环境指南</title>
-      <link>https://codemist.org/posts/spark/wsl-%E6%90%AD%E5%BB%BA-spark-debug/</link>
+      <link>http://localhost:1313/2025/04/26/wsl-%E4%B8%8B%E6%90%AD%E5%BB%BA-spark-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E6%8C%87%E5%8D%97/</link>
       <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://codemist.org/posts/spark/wsl-%E6%90%AD%E5%BB%BA-spark-debug/</guid>
+      <guid>http://localhost:1313/2025/04/26/wsl-%E4%B8%8B%E6%90%AD%E5%BB%BA-spark-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E6%8C%87%E5%8D%97/</guid>
       <description>&lt;p&gt;这是一篇记录在 WSL 环境下搭建 Spark 调试环境时遇到的问题及其解决方法的博客，方便日后排雷复用。&lt;/p&gt;</description>
     </item>
     <item>
       <title>WSL 配置 Spark</title>
-      <link>https://codemist.org/posts/spark/spark-wsl-%E9%85%8D%E7%BD%AE/</link>
+      <link>http://localhost:1313/2025/04/24/wsl-%E9%85%8D%E7%BD%AE-spark/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://codemist.org/posts/spark/spark-wsl-%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://localhost:1313/2025/04/24/wsl-%E9%85%8D%E7%BD%AE-spark/</guid>
       <description>&lt;p&gt;这是一篇介绍使用 Windows WSL 配置 Spark 的教程，包含 Java、Hadoop、Spark 的安装与配置过程。&lt;/p&gt;</description>
     </item>
   </channel>

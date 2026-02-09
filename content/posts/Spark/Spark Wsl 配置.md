@@ -1,7 +1,7 @@
 ---
 title: "WSL 配置 Spark"
 date: 2025-04-24
-categories: ["bigdata"]  
+categories: ["study"]  
 tags: ["WSL", "Spark"]
 draft: false
 ---
