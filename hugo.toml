@@ -1,12 +1,21 @@
-baseURL = 'https://codemist.org/'
+baseURL = 'https://codeofwhite.github.io/'
 languageCode = 'zh-cn'
 title = 'CodeMist · 记录技术与生活'
 theme = 'PaperMod'
+
+# 关键：开启相对URL（解决路径错乱）
+relativeURLs = true
+canonifyURLs = false
 
 hasCJKLanguage = true
 defaultContentLanguage = "zh-cn"
 
 permalinks = { posts = "/:year/:month/:day/:slug/" }
+
+# 静态资源处理（线上必开）
+[build]
+  writeStats = true
+  noJSConfigInAssets = false
 
 [params]
   author = "CodeMist"
@@ -102,3 +111,13 @@ permalinks = { posts = "/:year/:month/:day/:slug/" }
   section = ["HTML", "RSS"]
   taxonomy = ["HTML", "RSS"]
   term = ["HTML", "RSS"]
+
+# 新增：确保静态资源路径正确
+[mediaTypes]
+  [mediaTypes."text/css"]
+    suffixes = ["css"]
+[outputFormats]
+  [outputFormats.CSS]
+    mediaType = "text/css"
+    isPlainText = true
+    notAlternative = true
