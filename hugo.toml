@@ -57,13 +57,6 @@ theme = 'PaperMod'
 [params.goatCounter]
   code = "codeofwhite"
 
-[params.assets]
-  customCSS = [
-    "css/extended/readability.css",
-    "css/extended/card.css",
-    "css/extended/featured.css"
-  ]
-
 # 菜单设置
 [[menu.main]]
   identifier = "search"
