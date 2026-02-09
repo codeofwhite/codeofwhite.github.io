@@ -2,124 +2,121 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://codemist.org/categories/</loc>
     <lastmod>2025-11-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://codemist.org/</loc>
     <lastmod>2025-11-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/docker-desktop/</loc>
+    <loc>https://codemist.org/tags/docker-desktop/</loc>
     <lastmod>2025-11-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/k8s/</loc>
+    <loc>https://codemist.org/tags/k8s/</loc>
     <lastmod>2025-11-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://codemist.org/posts/</loc>
     <lastmod>2025-11-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://codemist.org/tags/</loc>
     <lastmod>2025-11-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/wsl/</loc>
+    <loc>https://codemist.org/tags/wsl/</loc>
     <lastmod>2025-11-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/11/07/%E8%A7%A3%E5%86%B3docker-desktop-k8s-%E5%90%AF%E5%8A%A8%E6%97%B6%E9%97%B4%E9%95%BF%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://codemist.org/posts/k8s/%E8%A7%A3%E5%86%B3docker-desktop-k8s-%E5%90%AF%E5%8A%A8%E6%97%B6%E9%97%B4%E9%95%BF%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2025-11-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/ai/</loc>
+    <loc>https://codemist.org/categories/ai/</loc>
     <lastmod>2025-11-07T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/bigdata/</loc>
+    <loc>https://codemist.org/categories/bigdata/</loc>
     <lastmod>2025-11-07T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/daily-study/</loc>
+    <loc>https://codemist.org/categories/daily-study/</loc>
     <lastmod>2025-11-07T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cdc/</loc>
+    <loc>https://codemist.org/tags/cdc/</loc>
     <lastmod>2025-05-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/debezium/</loc>
+    <loc>https://codemist.org/tags/debezium/</loc>
     <lastmod>2025-05-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/docker/</loc>
+    <loc>https://codemist.org/tags/docker/</loc>
     <lastmod>2025-05-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/kafka/</loc>
+    <loc>https://codemist.org/tags/kafka/</loc>
     <lastmod>2025-05-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/05/05/%E5%9F%BA%E4%BA%8E-debezium-%E7%9A%84-cdc-%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%AE%9E%E8%B7%B5/</loc>
+    <loc>https://codemist.org/posts/debezium/%E4%BD%BF%E7%94%A8-debezium-%E7%9A%84-cdc/</loc>
     <lastmod>2025-05-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/</loc>
+    <loc>https://codemist.org/tags/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/</loc>
     <lastmod>2025-05-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/flink/</loc>
+    <loc>https://codemist.org/tags/flink/</loc>
     <lastmod>2025-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/04/28/flink-%E9%87%8D%E5%90%AF%E4%B8%A2%E5%A4%B1-catalog-%E7%AD%89%E8%AE%B0%E5%BD%95%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://codemist.org/posts/flink/flink-sql-client-catalog%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2025-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/paimon/</loc>
+    <loc>https://codemist.org/tags/paimon/</loc>
     <lastmod>2025-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/spark/</loc>
+    <loc>https://codemist.org/tags/spark/</loc>
     <lastmod>2025-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/spark-streaming/</loc>
+    <loc>https://codemist.org/tags/spark-streaming/</loc>
     <lastmod>2025-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/04/28/spark-streaming-%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/</loc>
+    <loc>https://codemist.org/posts/spark/spark-streaming-%E6%8A%A5%E9%94%99%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2025-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/study/</loc>
+    <loc>https://codemist.org/posts/flink/wsl-%E6%9E%84%E5%BB%BA-flink-&#43;-paimon/</loc>
     <lastmod>2025-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/04/28/wsl-flink-paimon-%E5%AE%9E%E8%B7%B5/</loc>
+    <loc>https://codemist.org/posts/flink/flink-%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2025-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/04/28/wsl-flink-%E9%85%8D%E7%BD%AE%E9%A1%B9/</loc>
+    <loc>https://codemist.org/posts/kafka/wsl-kafka-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2025-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/04/28/wsl-kafka-%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2025-04-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/hadoop/</loc>
+    <loc>https://codemist.org/tags/hadoop/</loc>
     <lastmod>2025-04-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ml/</loc>
+    <loc>https://codemist.org/tags/ml/</loc>
     <lastmod>2025-04-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/04/26/spark-yarn-%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%85%B3%E9%97%AD%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E6%80%BB%E7%BB%93/</loc>
+    <loc>https://codemist.org/posts/spark/spark-yarn-%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</loc>
     <lastmod>2025-04-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/04/26/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/</loc>
+    <loc>https://codemist.org/posts/spark/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2025-04-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/04/26/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E4%B8%8E-pytorch-%E5%88%86%E5%88%AB/</loc>
+    <loc>https://codemist.org/posts/spark/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/</loc>
     <lastmod>2025-04-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/04/26/wsl-%E4%B8%8B%E6%90%AD%E5%BB%BA-spark-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E6%8C%87%E5%8D%97/</loc>
+    <loc>https://codemist.org/posts/spark/wsl-%E6%90%AD%E5%BB%BA-spark-debug/</loc>
     <lastmod>2025-04-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://codemist.org/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2025-04-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/04/24/wsl-%E9%85%8D%E7%BD%AE-spark/</loc>
+    <loc>https://codemist.org/posts/spark/spark-wsl-%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2025-04-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hugo/</loc>
+    <loc>https://codemist.org/tags/hugo/</loc>
     <lastmod>2025-04-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/04/18/my-first-blog/</loc>
+    <loc>https://codemist.org/posts/my-first-post/</loc>
     <lastmod>2025-04-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025/04/18/%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2hugo--github-pages/</loc>
+    <loc>https://codemist.org/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2025-04-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://codemist.org/about/</loc>
     <lastmod>2025-04-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://codemist.org/posts/%E9%83%A8%E7%BD%B2%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2hugo/</loc>
     <lastmod>2025-04-18T00:00:00+00:00</lastmod>
   </url>
 </urlset>

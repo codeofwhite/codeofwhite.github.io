@@ -1,39 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on CodeMist · 记录技术与生活</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>https://codemist.org/categories/</link>
     <description>Recent content in Categories on CodeMist · 记录技术与生活</description>
-    <generator>Hugo -- 0.152.2</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 07 Nov 2025 00:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://codemist.org/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI开发笔记</title>
-      <link>http://localhost:1313/categories/ai/</link>
+      <link>https://codemist.org/categories/ai/</link>
       <pubDate>Fri, 07 Nov 2025 00:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/ai/</guid>
+      <guid>https://codemist.org/categories/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>大数据开发笔记</title>
-      <link>http://localhost:1313/categories/bigdata/</link>
+      <link>https://codemist.org/categories/bigdata/</link>
       <pubDate>Fri, 07 Nov 2025 00:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/bigdata/</guid>
+      <guid>https://codemist.org/categories/bigdata/</guid>
       <description></description>
     </item>
     <item>
       <title>生活笔记</title>
-      <link>http://localhost:1313/categories/daily-study/</link>
+      <link>https://codemist.org/categories/daily-study/</link>
       <pubDate>Fri, 07 Nov 2025 00:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/daily-study/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Study</title>
-      <link>http://localhost:1313/categories/study/</link>
-      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/study/</guid>
+      <guid>https://codemist.org/categories/daily-study/</guid>
       <description></description>
     </item>
   </channel>

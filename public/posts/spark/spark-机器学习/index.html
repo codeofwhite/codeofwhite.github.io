@@ -1,258 +1,265 @@
 <!DOCTYPE html>
-<html lang="zh-cn" dir="auto">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Spark 机器学习 与 Pytorch 分别 | CodeMist · 记录技术与生活</title>
-<meta name="keywords" content="ML, Spark, Hadoop, 机器学习">
-<meta name="description" content="Spark 机器学习 与 Pytorch 分别 - CodeMist · 记录技术与生活">
-<meta name="author" content="CodeMist">
-<link rel="canonical" href="http://localhost:1313/posts/spark/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css" integrity="sha256-bammPSWpYIvKL3&#43;QegMOiHp908PzkY5MwRMSk2FBS9o=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh-cn" href="http://localhost:1313/posts/spark/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
-</head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="CodeMist · 记录技术与生活 (Alt + H)">CodeMist · 记录技术与生活</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="http://localhost:1313/" title="首页">
-                    <span>首页</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/posts/" title="文章汇集">
-                    <span>文章汇集</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/categories/bigdata/" title="大数据开发笔记">
-                    <span>大数据开发笔记</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/categories/ai/" title="AI">
-                    <span>AI</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/categories/daily-study/" title="日常和学习">
-                    <span>日常和学习</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="关于">
-                    <span>关于</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <h1 class="post-title entry-hint-parent">
-      Spark 机器学习 与 Pytorch 分别
-    </h1>
-    <div class="post-meta"><span title='2025-04-26 00:00:00 +0000 UTC'>April 26, 2025</span>&nbsp;·&nbsp;CodeMist
+    <title>Spark 机器学习 与 Pytorch 分别 | CodeMist · 记录技术与生活</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="CodeMist">
+    
 
-</div>
-  </header> 
-  <div class="post-content"><h3 id="spark-mllib-与-pytorch-对比"><strong>Spark MLlib 与 PyTorch 对比</strong><a hidden class="anchor" aria-hidden="true" href="#spark-mllib-与-pytorch-对比">#</a></h3>
-<h4 id="1-核心定位"><strong>1. 核心定位</strong><a hidden class="anchor" aria-hidden="true" href="#1-核心定位">#</a></h4>
+    
+<link rel="stylesheet" href="/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://codemist.org/posts/spark/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+    
+
+    <meta property="og:url" content="https://codemist.org/posts/spark/spark-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+  <meta property="og:site_name" content="CodeMist · 记录技术与生活">
+  <meta property="og:title" content="Spark 机器学习 与 Pytorch 分别">
+  <meta property="og:description" content="记录大数据开发、AI技术与日常学习的点滴探索">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-26T00:00:00+00:00">
+    <meta property="article:tag" content="ML">
+    <meta property="article:tag" content="Spark">
+    <meta property="article:tag" content="Hadoop">
+    <meta property="article:tag" content="机器学习">
+
+  <meta itemprop="name" content="Spark 机器学习 与 Pytorch 分别">
+  <meta itemprop="description" content="记录大数据开发、AI技术与日常学习的点滴探索">
+  <meta itemprop="datePublished" content="2025-04-26T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-04-26T00:00:00+00:00">
+  <meta itemprop="wordCount" content="28">
+  <meta itemprop="keywords" content="ML,Spark,Hadoop,机器学习">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Spark 机器学习 与 Pytorch 分别">
+  <meta name="twitter:description" content="记录大数据开发、AI技术与日常学习的点滴探索">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-gray">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        CodeMist · 记录技术与生活
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/" title="首页 page">
+              首页
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/posts/" title="文章汇集 page">
+              文章汇集
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/bigdata/" title="大数据开发笔记 page">
+              大数据开发笔记
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/ai/" title="AI page">
+              AI
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/categories/daily-study/" title="日常和学习 page">
+              日常和学习
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/about/" title="关于 page">
+              关于
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Spark 机器学习 与 Pytorch 分别</h1>
+      
+      <p class="tracked"><strong>CodeMist</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-04-26T00:00:00Z">April 26, 2025</time>
+      
+
+      
+      
+        <span class="f6 mv4 dib tracked"> - One minute read </span>
+        <span class="f6 mv4 dib tracked"> - 28 words </span>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links text-light pr4-l w-two-thirds-l"><h3 id="spark-mllib-与-pytorch-对比"><strong>Spark MLlib 与 PyTorch 对比</strong></h3>
+<h4 id="1-核心定位"><strong>1. 核心定位</strong></h4>
 <ul>
 <li><strong>Spark MLlib</strong>：专注<strong>分布式大数据处理</strong>，适合传统机器学习（如回归、聚类）和大规模数据预处理。</li>
 <li><strong>PyTorch</strong>：专注<strong>深度学习</strong>（如CNN、RNN），支持动态计算图和GPU加速，适合复杂模型研发。</li>
 </ul>
-<h4 id="2-数据处理"><strong>2. 数据处理</strong><a hidden class="anchor" aria-hidden="true" href="#2-数据处理">#</a></h4>
+<h4 id="2-数据处理"><strong>2. 数据处理</strong></h4>
 <ul>
 <li><strong>Spark</strong>：基于分布式数据集（RDD/DataFrame），适合批处理和流式数据。</li>
 <li><strong>PyTorch</strong>：单机为主（支持分布式扩展），通过<code>DataLoader</code>高效加载数据，适合小规模高维数据（如图像、文本）。</li>
 </ul>
-<h4 id="3-计算模型"><strong>3. 计算模型</strong><a hidden class="anchor" aria-hidden="true" href="#3-计算模型">#</a></h4>
+<h4 id="3-计算模型"><strong>3. 计算模型</strong></h4>
 <ul>
 <li><strong>Spark</strong>：静态计算图，适合固定流程的分布式计算。</li>
 <li><strong>PyTorch</strong>：动态计算图，灵活调试，适合快速迭代。</li>
 </ul>
-<h4 id="4-性能与扩展"><strong>4. 性能与扩展</strong><a hidden class="anchor" aria-hidden="true" href="#4-性能与扩展">#</a></h4>
+<h4 id="4-性能与扩展"><strong>4. 性能与扩展</strong></h4>
 <ul>
 <li><strong>Spark</strong>：依赖集群规模，适合海量数据批处理。</li>
 <li><strong>PyTorch</strong>：依赖GPU加速，适合深度学习的高性能计算。</li>
 </ul>
-<h4 id="5-适用场景"><strong>5. 适用场景</strong><a hidden class="anchor" aria-hidden="true" href="#5-适用场景">#</a></h4>
+<h4 id="5-适用场景"><strong>5. 适用场景</strong></h4>
 <ul>
 <li><strong>选Spark MLlib</strong>：需处理TB级数据或传统机器学习任务。</li>
 <li><strong>选PyTorch</strong>：需训练复杂神经网络或研究新模型。</li>
 </ul>
-<p><strong>总结</strong>：两者互补——Spark处理大数据，PyTorch深耕深度学习。</p>
+<p><strong>总结</strong>：两者互补——Spark处理大数据，PyTorch深耕深度学习。</p><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/ml/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ML</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/spark/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Spark</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/hadoop/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Hadoop</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">机器学习</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
 
-  </div>
+    <aside class="w-30-l mt6-l">
 
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/ml/">ML</a></li>
-      <li><a href="http://localhost:1313/tags/spark/">Spark</a></li>
-      <li><a href="http://localhost:1313/tags/hadoop/">Hadoop</a></li>
-      <li><a href="http://localhost:1313/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li>
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/spark/spark-yarn-%E5%90%AF%E5%8A%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">Spark Yarn 启动与关闭的注意事项总结</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/spark/spark-%E7%9A%84%E5%87%A0%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F/">Spark 的几种启动方式</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/spark/wsl-%E6%90%AD%E5%BB%BA-spark-debug/">WSL 下搭建 Spark 调试环境指南</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/spark/spark-wsl-%E9%85%8D%E7%BD%AE/">WSL 配置 Spark</a>
+        </li>
+	    
     </ul>
-  </footer>
-</article>
+</div>
+
+</aside>
+
+  </article>
+
     </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">CodeMist · 记录技术与生活</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+    <footer class="bg-gray bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://codemist.org/" >
+    &copy;  CodeMist · 记录技术与生活 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
 
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
+<div style="margin-top: 10px; color: #666; font-size: 14px;">
+  总访问量：<span id="busuanzi_value_site_pv"></span> 次 | 
+  访客数：<span id="busuanzi_value_site_uv"></span> 人
+</div>
 
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
+  </body>
 </html>

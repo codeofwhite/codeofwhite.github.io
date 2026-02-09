@@ -1,7 +1,7 @@
 ---
 title: "Spark Streaming 报错记录"
 date: 2025-04-28
-categories: ["study"]  
+categories: ["bigdata"]  
 tags: ["Spark", "Spark Streaming"]
 draft: false
 ---
