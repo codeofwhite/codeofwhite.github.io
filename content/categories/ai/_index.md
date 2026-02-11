@@ -1,5 +1,5 @@
 ---
-title: "AI开发笔记"
+title: "AI 学习笔记"
 date: 2025-11-07T00:00:00+08:00
 draft: false
 ---

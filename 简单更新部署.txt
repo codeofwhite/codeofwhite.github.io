@@ -2,5 +2,5 @@ git add .
 git commit -m "添加新文章：新文章标题"
 git push
 
-打包命令
- hugo --minify --baseURL "https://codeofwhite.github.io/"
+打包命令（先删除 public 文件夹）
+hugo --minify --baseURL "https://codeofwhite.github.io/"
