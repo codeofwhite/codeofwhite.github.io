@@ -1,6 +1,6 @@
 ---
 title: "WSL 构建 Flink + Paimon 实践"
-date: 2025-04-28
+date: 2025-04-29
 categories: ["bigdata"]  
 tags: ["wsl", "flink", "paimon"]
 draft: false
