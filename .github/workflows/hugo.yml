@@ -11,11 +11,18 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -23,15 +30,16 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
-      - name: Clean old public and build
+      - name: Clean & Build
         run: |
           rm -rf public
-          hugo --minify
+          rm -rf resources/_gen
+          hugo --gc --minify
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: public
 
   deploy:
     needs: build
