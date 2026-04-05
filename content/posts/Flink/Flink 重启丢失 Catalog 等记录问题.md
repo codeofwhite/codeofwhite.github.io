@@ -1,6 +1,6 @@
 ---
 title: "Flink 重启丢失 Catalog 等记录问题"
-date: 2025-04-28
+date: 2025-04-29
 categories: ["bigdata"]  
 tags: ["wsl", "flink"]
 draft: false
